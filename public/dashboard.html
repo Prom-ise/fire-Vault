@@ -21,7 +21,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
         import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.2/database-auth.js";
+        // import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.2/database-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAhm0U3zF1xcXOHuhjdU-lHJIjQsX8Nd0M",
@@ -35,7 +35,7 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const database = getDatabase(app);
+        // const database = getDatabase(app);
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -52,7 +52,7 @@
                 <img src="${user.photoURL}" alt=""
             </div><br>
             </div>
-            <button class="btn btn-danger class="ms-5 mt-5" onclick="signO()">sign Out</button>
+            <button class="btn btn-danger ms-5 mt-3" onclick="signO()">sign Out</button>
             `
             } else {
                 console.log('user is signed out');
@@ -68,21 +68,21 @@
         }
         window.signO = signO
 
-        const submitTodo = () => {
-            let time = new Date().toLocaleTimeString()
-            let date = new Date().toLocaleDateString()
-            // alert('submitted')
-            let inputOne = document.getElementById('todo').value
-            let inputTwo = document.getElementById('todoDes').value
+        // const submitTodo = () => {
+        //     let time = new Date().toLocaleTimeString()
+        //     let date = new Date().toLocaleDateString()
+        //     // alert('submitted')
+        //     let inputOne = document.getElementById('todo').value
+        //     let inputTwo = document.getElementById('todoDes').value
 
-            if (inputOne === '' || inputTwo === '') {
-                alert('Fill something Inside')
-            }
-            else{
-                let obj = {time, date, inputOne, inputTwo}
-                
-            }
-        }
+        //     if (inputOne === '' || inputTwo === '') {
+        //         alert('Fill something Inside')
+        //     }
+        //     else{
+        //         let obj = {time, date, inputOne, inputTwo}
+        //         let db = ref()
+        //     }
+        // }
     </script>
 </body>
 

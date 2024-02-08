@@ -64,14 +64,18 @@
         window.signO = signO
 
         const submitTodo = () => {
-            alert('submitted')
+            let time = new Date().toLocaleTimeString()
+            let date = new Date().toLocaleDateString()
+            // alert('submitted')
             let inputOne = document.getElementById('todo').value
             let inputTwo = document.getElementById('todoDes').value
 
             if (inputOne === '' || inputTwo === '') {
-                alert('Fill somethinG Inside')
+                alert('Fill something Inside')
             }
-            
+            else{
+                let obj = {time, date, inputOne, inputTwo}
+            }
         }
     </script>
 </body>

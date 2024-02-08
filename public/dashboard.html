@@ -9,14 +9,13 @@
 </head>
 
 <body>
-    <h1 class="mx-auto m-3">The undeafeated Dashboard that can only be defeated by you is Here!</h1>
-    <div id="show" class="shadow-sm p-3"></div>
-    <button class="btn-btn-danger" onclick="signO()">sign Out</button>
-    <div class="my-3 shadow-sm p-3">
-        <h4 class="my-3">To Do Application</h4>
-        <input type="text" class="form-control bg-primary text-light shadow-none" id="todo">
-        <input type="text" class="form-control bg-primary text-light shadow-none" id="todoDes">
-        <button class="btn btn-success w-100" onclick="submitTodo()">Submit</button>
+    <div id="show" class="shadow-sm p-3 m-5 my-3">
+    </div>
+    <div class="my-3 shadow-sm p-3 m-5">
+        <h4 class="my-3 text-center">To Do Application</h4>
+        <input type="text" class="my-2 form-control bg-primary text-light shadow-none" id="todo">
+        <input type="text" class="my-2 form-control bg-primary text-light shadow-none" id="todoDes">
+        <button class="btn btn-success w-100 my-2" onclick="submitTodo()">Submit</button>
     </div>
 
     <script type="module">
@@ -42,12 +41,16 @@
                 console.log(`user is signed in, ${uid}`);
                 console.log(user);
                 show.innerHTML = `
-            <h3>Welcome ${user.displayName}</h3>
-            <p>You email address is ${user.email}</p>
-            <div>
+                <h1 class="mx-auto m-3 text-center">The undeafeated Dashboard that can only be defeated by you is Here!</h1>
+                <div class="ms-5">
+            <h3 class="ms-5">Welcome ${user.displayName}</h3>
+            <p class="ms-5">You email address is ${user.email}</p>
+            <div class="ms-5">
                 Profile Picture:
                 <img src="${user.photoURL}" alt=""
+            </div><br>
             </div>
+            <button class="btn btn-danger class="ms-5 mt-5" onclick="signO()">sign Out</button>
             `
             } else {
                 console.log('user is signed out');

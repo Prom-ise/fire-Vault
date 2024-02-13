@@ -9,25 +9,19 @@
     <button onclick="signG()">Sign in with GitHub</button>
 
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-      import {
-        getAuth,
-        signInWithPopup,
-        GithubAuthProvider,
-        signInWithCredential,
-        signInWithRedirect,
-        getRedirectResult,
-      } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAuth, signInWithPopup, GithubAuthProvider, signInWithCredential, signInWithRedirect, getRedirectResult, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyAhm0U3zF1xcXOHuhjdU-lHJIjQsX8Nd0M",
-        authDomain: "first-class-firebase.firebaseapp.com",
-        projectId: "first-class-firebase",
-        storageBucket: "first-class-firebase.appspot.com",
-        messagingSenderId: "685476076997",
-        appId: "1:685476076997:web:2ebc5ec00878085fac3fac",
-        measurementId: "G-7ZP960H923",
-      };
+    apiKey: "AIzaSyAhm0U3zF1xcXOHuhjdU-lHJIjQsX8Nd0M",
+    authDomain: "first-class-firebase.firebaseapp.com",
+    databaseURL: "https://first-class-firebase-default-rtdb.firebaseio.com",
+    projectId: "first-class-firebase",
+    storageBucket: "first-class-firebase.appspot.com",
+    messagingSenderId: "685476076997",
+    appId: "1:685476076997:web:2ebc5ec00878085fac3fac",
+    measurementId: "G-7ZP960H923"
+  };
 
       const app = initializeApp(firebaseConfig);
       const provider = new GithubAuthProvider();

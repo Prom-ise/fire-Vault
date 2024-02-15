@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
@@ -27,7 +27,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 
         const firebaseConfig = {
@@ -44,10 +44,11 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app);
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
-                console.log(`user is signed in, ${uid}`);
+                console.log (`user is signed in, ${uid}`);
                 console.log(user);
                 show.innerHTML = `
                 <h1 class=" m-3 text-center">The undeafeated Dashboard that can only be defeated by you is Here!</h1>
@@ -56,12 +57,11 @@
             <p class="text-center">You email address is ${user.email}</p>
             <div class="text-center">
                 Profile Picture:<br>
-                <img src="${user.photoURL}" alt=""
+                <img src="${user.photoURL}" alt="">
             </div>
             </div>
             <button class="btn btn-danger  mt-3" onclick="signO()">sign Out</button>
-            `
-            } else {
+            `} else {
                 console.log('user is signed out');
                 window.location.href = 'index.html'
             }
@@ -74,8 +74,8 @@
                 .catch(() => {
                     console.log('signing out');
                 })
-        }
-        window.signO = signO
+            }
+        window.signO = signO;
 
         const submitTodo = () => {
             let time = new Date().toLocaleTimeString()
@@ -122,13 +122,25 @@
                 <h5>${todo.inputOne}</h5>
                 <h5>${todo.inputTwo}</h5>
                 <small>${todo.time}, ${todo.date}</small>
+                <button class="btn btn-danger" onclick="deleteTodo('${key}')">Delete</button>
                 <br>
             `;
                 }
             }
         });
+        const deleteTodo = (todoKey) => { // Define deleteTodo to accept todoKey parameter
+    let todoRef = ref(database, `todos/${todoKey}`);
+    remove(todoRef)
+        .then(() => {
+            console.log("Todo deleted successfully");
+        })
+        .catch(error => {
+            console.error("Error deleting todo:", error);
+        });
+}
+
 
     </script>
 </body>
 
-</html
+</html>

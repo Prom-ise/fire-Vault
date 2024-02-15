@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css"">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
   </head>
   <body>
     <button class="btn btn-success m-5" onclick="signA()">
       sign in with google
     </button>
+    <input type="number" id="phoneNumberInput" />
+    <button id="sign-in-button" onclick="signP()">Sign In with Phone Number</button>
+    <button onclick="signB()">Sign in with Facebook</button>
+    <button onclick="signG()">Sign in with GitHub</button>
 
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -18,13 +22,10 @@
         getAuth,
         GoogleAuthProvider,
         signInWithPopup,
+        RecaptchaVerifier, signInWithPhoneNumber, FacebookAuthProvider, GithubAuthProvider, signInWithCredential, signInWithRedirect, getRedirectResult,  
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      
       const firebaseConfig = {
         apiKey: "AIzaSyAhm0U3zF1xcXOHuhjdU-lHJIjQsX8Nd0M",
         authDomain: "first-class-firebase.firebaseapp.com",
@@ -40,27 +41,9 @@
       const auth = getAuth(app);
       const analytics = getAnalytics(app);
       const provider = new GoogleAuthProvider();
-
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          // The signed-in user info.
-          const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        })
-        .catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        });
+      const provide = new FacebookAuthProvider();
+      const provision = new GithubAuthProvider();
+      auth.useDeviceLanguage();
 
         const signA = () => {
         alert("I am Working");
@@ -79,6 +62,68 @@
           });
       };
       window.signA = signA;
+      
+      const signP = () => {
+            window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
+                'size': 'invisible',
+                'callback': (response) => {
+                    console.log(response);
+                }
+            });
+
+            const appVerifier = window.recaptchaVerifier;
+            const phoneNumber = document.getElementById('phoneNumberInput').value
+            signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+                .then((confirmationResult) => {
+                    console.log("msg sent");
+                    var verificationCode = prompt('Please enter the verification code sent to your mobile phone:');
+                    return confirmationResult.confirm(verificationCode);
+                }).then((result)=>{
+                    console.log("successfully authenticated", + result);
+                }).catch((error) => {
+                    console.log("error: " + error);
+                });
+        }
+        window.signP = signP
+
+        const signB = () => {
+        alert("I am Working");
+        signInWithPopup(auth, provide)
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+          });
+      };
+      window.signB = signB;
+
+      const signG = () => {
+        signInWithRedirect(auth, provision);
+        getRedirectResult(auth)
+          .then((result) => {
+            const credential = GithubAuthProvider.credentialFromResult(result);
+            // if (credential) {
+            //   // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+            //   const token = credential.accessToken;
+            //   // ...
+            // }
+            // The signed-in user info.
+            const user = result.user;
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const credential = GithubAuthProvider.credentialFromError(error);
+          });
+      };
+      window.signG = signG;
     </script>
   </body>
 </html>

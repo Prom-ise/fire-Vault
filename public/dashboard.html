@@ -19,7 +19,9 @@
         <input type="text" placeholder="TO DO" class="my-2 form-control bg-primary text-light shadow-none" id="todo">
         <input type="text" placeholder="TO DO DESCRIPTION" class="my-2 form-control bg-primary text-light shadow-none"
             id="todoDes">
+        <input type="file" class="my-2 form-control" id="filey">
         <button class="btn btn-info w-100" onclick="submitTodo()">Submit</button>
+        <button class="btn btn-info w-100 my-3" onclick="submitFile()">Submit File</button>
     </div>
     <div id="showy" class="text-center shadow-sm p-3 m-5 my-3">
     </div>
@@ -28,6 +30,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getDatabase, ref, set, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getStorage, ref as storef, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
 
         const firebaseConfig = {
@@ -44,11 +47,12 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app);
+        const storage = getStorage();
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
-                console.log (`user is signed in, ${uid}`);
+                console.log(`user is signed in, ${uid}`);
                 console.log(user);
                 show.innerHTML = `
                 <h1 class=" m-3 text-center">The undeafeated Dashboard that can only be defeated by you is Here!</h1>
@@ -74,7 +78,7 @@
                 .catch(() => {
                     console.log('signing out');
                 })
-            }
+        }
         window.signO = signO;
 
         const submitTodo = () => {
@@ -128,18 +132,35 @@
                 }
             }
         });
-        const deleteTodo = (todoKey) => { // Define deleteTodo to accept todoKey parameter
-    let todoRef = ref(database, `todos/${todoKey}`);
-    remove(todoRef)
-        .then(() => {
-            console.log("Todo deleted successfully");
-        })
-        .catch(error => {
-            console.error("Error deleting todo:", error);
-        });
-}
 
+        const deleteTodo = (todoKey) => {
+            let todoRef = ref(database, `todos/${todoKey}`);
+            remove(todoRef)
+                .then(() => {
+                    console.log("Todo deleted successfully");
+                })
+                .catch(error => {
+                    console.error("Error deleting todo:", error);
+                });
+        }
+        window.deleteTodo = deleteTodo
 
+        const submitFile = () => {
+            // alert('Na file I be o')
+            let incomingFile = document.getElementById('filey').files[0]
+            console.log(incomingFile);
+            onAuthStateChanged(auth, (user) => {
+                let filedUser = user.displayName
+                console.log(filedUser);
+                let storageref = storef(storage, `${filedUser}/${incomingFile.name}`)
+                let task = uploadBytesResumable(storageref, incomingFile)
+                if (task) {
+                    console.log('saved');
+                }
+            })
+
+        }
+        window.submitFile = submitFile
     </script>
 </body>
 

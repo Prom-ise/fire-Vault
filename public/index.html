@@ -5,15 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   </head>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20vh;
+      background: linear-gradient(
+        blue,
+        skyblue
+      );
+    }
+    .container{
+      width: 500px;
+      border-radius: 20px;
+    }
+    .social{
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
   <body>
-    <button class="btn btn-success m-5" onclick="signA()">
-      sign in with google
-    </button>
-    <input type="number" id="phoneNumberInput" />
-    <button id="sign-in-button" onclick="signP()">Sign In with Phone Number</button>
-    <button onclick="signB()">Sign in with Facebook</button>
-    <button onclick="signG()">Sign in with GitHub</button>
+    <div class="container bg-light shadow-sm p-3 m-5 my-3 text-center">
+      <h1 class="text-primary-emphasis">Sign Up Page</h1>
+    
+    <input type="number" class="bg-tertiary form-control my-4 mx-auto shadow-none w-75" id="phonenumber" placeholder="+234 802 1234 9872"/>
+    <button id="sign-in-button" class="btn btn-success w-75" onclick="signP()">Sign In with Phone Number</button>
+
+    <div class="social d-flex gap-4 my-3">
+    
+      <i onclick="signA()" class="fab fa-google fa-2x"></i>
+    
+   <i onclick="signB()" class="text-primary fab fa-facebook fa-2x"></i>
+    <i onclick="signG()" class="fab fa-github fa-2x"></i>
+</div>
+     </div>
 
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -22,7 +51,8 @@
         getAuth,
         GoogleAuthProvider,
         signInWithPopup,
-        RecaptchaVerifier, signInWithPhoneNumber, FacebookAuthProvider, GithubAuthProvider, signInWithCredential, signInWithRedirect, getRedirectResult,  
+        GithubAuthProvider,
+        RecaptchaVerifier, signInWithPhoneNumber, FacebookAuthProvider, 
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
       
@@ -41,8 +71,8 @@
       const auth = getAuth(app);
       const analytics = getAnalytics(app);
       const provider = new GoogleAuthProvider();
+      const gitHub = new GithubAuthProvider();
       const provide = new FacebookAuthProvider();
-      const provision = new GithubAuthProvider();
       auth.useDeviceLanguage();
 
         const signA = () => {
@@ -63,6 +93,21 @@
       };
       window.signA = signA;
       
+      const signG = () => {
+      signInWithPopup(auth, gitHub)
+  .then((result) => {
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GithubAuthProvider.credentialFromError(error);
+  });
+};
+ window.signG = signG
+
       const signP = () => {
             window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
                 'size': 'invisible',
@@ -72,7 +117,7 @@
             });
 
             const appVerifier = window.recaptchaVerifier;
-            const phoneNumber = document.getElementById('phoneNumberInput').value
+            const phoneNumber = document.getElementById('phonenumber').value
             signInWithPhoneNumber(auth, phoneNumber, appVerifier)
                 .then((confirmationResult) => {
                     console.log("msg sent");
@@ -102,28 +147,6 @@
           });
       };
       window.signB = signB;
-
-      const signG = () => {
-        signInWithRedirect(auth, provision);
-        getRedirectResult(auth)
-          .then((result) => {
-            const credential = GithubAuthProvider.credentialFromResult(result);
-            // if (credential) {
-            //   // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            //   const token = credential.accessToken;
-            //   // ...
-            // }
-            // The signed-in user info.
-            const user = result.user;
-          })
-          .catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const credential = GithubAuthProvider.credentialFromError(error);
-          });
-      };
-      window.signG = signG;
     </script>
   </body>
 </html>

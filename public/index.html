@@ -40,8 +40,7 @@
       <i onclick="signA()" class="fab fa-google fa-2x"></i>
     
    <i onclick="signB()" class="text-primary fab fa-facebook fa-2x"></i>
-    <i onclick="signD()" class="fab fa-github fa-2x"></i>
-    <i onclick="signT()" class="fab fa-twitter fa-2x"></i>
+    <i onclick="signG()" class="fab fa-github fa-2x"></i>
 </div>
      </div>
 
@@ -53,7 +52,6 @@
         GoogleAuthProvider,
         signInWithPopup,
         GithubAuthProvider,
-        TwitterAuthProvider,
         RecaptchaVerifier, signInWithPhoneNumber, FacebookAuthProvider, 
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -74,7 +72,6 @@
       const analytics = getAnalytics(app);
       const provider = new GoogleAuthProvider();
       const gitHub = new GithubAuthProvider();
-      const twitter = new TwitterAuthProvider();
       const provide = new FacebookAuthProvider();
       auth.useDeviceLanguage();
 
@@ -95,38 +92,20 @@
           });
       };
       window.signA = signA;
-
-      const signT = () => {
-        signInWithPopup(auth, twitter)
-          .then((result) => {
-            const user = result.user;
-            console.log(user);
-          })
-          .catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-          });
-      };
-      window.signT = signT;
-
       
-      const signD = () => {
+      const signG = () => {
       signInWithPopup(auth, gitHub)
   .then((result) => {
     const user = result.user;
     console.log(user);
   }).catch((error) => {
     const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
+    const errorMessage = error.message;
+    const email = error.customData.email;
     const credential = GithubAuthProvider.credentialFromError(error);
   });
 };
- window.signD = signD
+ window.signG = signG
 
       const signP = () => {
             window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {

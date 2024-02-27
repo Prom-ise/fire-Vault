@@ -14,7 +14,7 @@
     </div>
     <div class="my-3 shadow-sm p-3 m-5">
         <h4 class="my-3 text-center">To Do Application</h4>
-        <div class="my-2 rounded-2 animate__animated animate__rubberBand text-center bg-success text-light w-50"
+        <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center bg-success text-light w-50"
             style="display: none;" id="save">Saved successfully!😁😁😅</div>
         <input type="text" placeholder="TO DO" class="my-2 form-control bg-primary text-light shadow-none" id="todo">
         <input type="text" placeholder="TO DO DESCRIPTION" class="my-2 form-control bg-primary text-light shadow-none"
@@ -134,7 +134,7 @@
         });
 
         const deleteTodo = (todoKey) => {
-            let todoRef = ref(database, `todos/${todoKey}`);
+            let ftodoRe = ref(database, `todos/${todoKey}`);
             remove(todoRef)
                 .then(() => {
                     console.log("Todo deleted successfully");

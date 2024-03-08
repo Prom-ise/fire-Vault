@@ -134,7 +134,7 @@
         });
 
         const deleteTodo = (todoKey) => {
-            let ftodoRe = ref(database, `todos/${todoKey}`);
+            let todoRef = ref(database, `todos/${todoKey}`);
             remove(todoRef)
                 .then(() => {
                     console.log("Todo deleted successfully");

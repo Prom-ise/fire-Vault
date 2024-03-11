@@ -1,6 +1,52 @@
-/* body{
+.body{
     background-color: #212121;
     overflow: hidden;
+}
+.glitch {
+  position: relative;
+  font-family: cursive;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(-2px, 0) skewX(-2deg);
+  animation: glitch 1s linear infinite alternate;
+}
+
+.glitch {
+  color: white;
+  text-shadow: -2px 0 cyan, 2px 0 blue;
+  margin-bottom: -30px;
+  font-size: 30px;
+}
+
+@keyframes glitch {
+  0% {
+      clip-path: none;
+      transform: translate(-2px, 0) skewX(-2deg);
+  }
+  25% {
+      clip-path: inset(0 0 50% 0);
+      transform: translate(-2px, -2px) skewX(-1deg);
+  }
+  50% {
+      clip-path: inset(0 0 0 50%);
+      transform: translate(-2px, 0) skewX(1deg);
+  }
+  75% {
+      clip-path: inset(50% 0 0 0);
+      transform: translate(2px, 2px) skewX(2deg);
+  }
+  100% {
+      clip-path: none;
+      transform: translate(2px, 0) skewX(2deg);
+  }
 }
 #Container {
     display: flex;
@@ -8,6 +54,7 @@
     align-items: center;
     justify-content: flex-end;
     height: 100%;
+    
   }
   
   #rays {
@@ -20,23 +67,24 @@
   .form {
     position: relative;
     top: 5em;
-    padding: 4% 1%;
+    width: 350px;
+    padding: 4% 1.2%;
     z-index: 3;
     display: flex;
     flex-direction: column;
     border-radius: 0.5rem;
     border: 4px solid #fff;
     background: rgba(0, 255, 240, 0.52);
-    box-shadow: 0px 0px 64px 0px #82e1ff inset, 0px 0px 16px #a8fffaa6;
+    box-shadow: 0px 0px 64px 0px #82e1ff inset, 0px 0px 16px #a8fffaa6 !important;
     backdrop-filter: blur(3.5px);
     gap: 1em;
     animation: float 2s ease-in-out infinite;
   }
-  form:focus-within{
+  .form:focus-within{
     animation-name: none;
     transition: 1.2s;
     background: blue;
-    box-shadow: 0px 0px 64px 0px cyan inset, 0px 0px 16px cyan;
+    box-shadow: 0px 0px 64px 0px cyan inset, 0px 0px 16px cyan ;
   }
   @keyframes float {
     0% {
@@ -61,7 +109,6 @@
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 3px;
-    
   }
   
   .form-content {
@@ -79,8 +126,9 @@
   }
   
   .input {
-    width: 245px;
+    padding: 0.6em 2em;
     min-height: 45px;
+    font-size: 16px;
     color: #fff;
     outline: none;
     transition: 0.35s;
@@ -94,6 +142,7 @@
   
   .input::placeholder {
     color: #999;
+    font-size: 15px;
   }
   
   .input:focus.input::placeholder {
@@ -109,8 +158,31 @@
     inset -1px -1px 5px rgba(255, 255, 255, 0.6);
   }
   
-
+  .form:has(input[type="tel"]:invalid) {
+    box-shadow: 0px 0px 64px 0px red inset, 0px 0px 16px red !important;
+  }
   
+  .code{
+    text-align: center;
+    color: lime;
+    font-size: 20px;
+    font-weight: 600;
+    display: none;
+  }
+  .success{
+    text-align: center;
+    color: lime;
+    font-size: 23px;
+    font-weight: 600;
+    display: none;
+  }
+  .invalid{
+    text-align: center;
+    color: red;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
   .bn5 {
     padding: 0.6em 2em;
     border: none;
@@ -248,4 +320,4 @@
     100% {
       opacity: 0.6;
     }
-  } */
+  }

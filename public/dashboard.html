@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://kit.fontawesome.com/c7d3ea0987.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body class="body">
+  <div class="greetings" id="greetings">
+    <h1 class="welcome animate__animated animate__backInDown">Welcome back to</h1>
+    <h1 class="glitch animate__animated animate__backInDown" data-text="AUTH-VAULT">AUTH-VAULT</h1>
+    <h1 class="user animate__animated animate__backInDown animate__delay-1s" id="show"></h1>
+    <div class="butt mt-5">
+      <button class="button1 animate__animated animate__backInLeft animate__delay-2s" onclick="openWork()"
+        class="rounded-4 mt-5">
+        Click to get Started
+        <div class="star-1">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div class="star-2">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div class="star-3">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div class="star-4">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div class="star-5">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div class="star-6">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+            viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+              <path class="fil0"
+                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
+              </path>
+            </g>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+  
+  <div class="storage" id="storage">
+    <div class="d-flex mt-3">
+      <div class="ms-5 glitch2 animate__animated animate__backInLeft" data-text="AUTH-VAULT">AUTH-VAULT</div>
+      <div class="ms-auto me-5" id="showy"></div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #1e1f20;">
+          <div class="modal-header">
+            <h3 class="myModalLabel" id="myModalLabel"></h3>
+            <button type="button" class="btn-close" style="background-color: cyan; " data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center mx-auto">
+            <div id="shower"></div>
+            <div id="showee"></div>
+            <p class="glad">We're glad you're here! Protect your files and information with ease.</p>
+          </div>
+          <i id="timer" class="text-start"></i>
+          <div class="modal-footer">
+            <div class="mx-auto">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger"  onclick="signOu()"><i class="fa-solid fa-right-from-bracket"></i> Sign
+                Out</button>
+            </div>
+          </div>
+          <div class="privacy mb-2 text-center">
+            <span data-bs-toggle="modal" data-bs-target="#exaModal">Privacy Policy </span> <span> . </span> <span data-bs-toggle="modal" data-bs-target="#eModal"> Terms of
+              Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row gap-5 work mt-4">
+
+      <div class="col-lg-5 container col-md-5 col-9 back animate__animated animate__flipInY">
+        <div id="progress"></div>
+        <div id="plsInput" class="animate__animated animate__headShake">Tell me your to-do! (Optional details welcome.)</div>
+        <div id="saves" class="animate__animated animate__tada animate__repeat-2">Let's go! Your todo is safe and sound. 😊</div>
+        <div id="saver" class="animate__animated animate__tada animate__repeat-2">Way to go! Your file is safe and sound.</div>
+        <div id="errorLoader" class="animate__animated animate__jello animate__repeat-2">Uh oh! An error occured while uploading your file. Pls try again</div>
+        <div id="occurError" class="animate__animated animate__jello">An error occurred while saving your to-do. Please try again.</div>
+        <div>
+          <input type="text" autocomplete="off" placeholder="Write down your next to-do" name="text" class="input" id="todo">
+          <textarea class="inpu mt-3" placeholder="Tell me more about your to-do! (Optional)" rows="3" cols="10" id="todoDes">
+  </textarea>
+          <div class="butter gap-2 my-3 d-flex">
+            <button class="buttons me-2" onclick="submitTodo()">SUBMIT</button>
+            <div class="file-upload-container">
+              <input class="file-input " type="file" id="filey">
+              <i class="file-upload-icon fa-regular fa-image"></i>
+            </div>
+            <button tabindex="0" class="plusButton" onclick="submitFile()">
+              <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <g mask="url(#mask0_21_345)">
+                  <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+                </g>
+              </svg>
+            </button>
+          </div>
+          <input type="text" id="imageDescription" placeholder="File description (Optional)" class="input">
+        </div>
+      </div>
+
+
+      <div class="col-lg-5 col-md-5 col-9 container-fluid statistic animate__animated animate__flipInX text-light">
+       
+          <input class="input mt-3" name="text" id="searchInput" type="text" placeholder="Search To-do">
+          
+        
+        <div class="d-flex mb-3 sticky-top bach">
+          <button type="submit" class="but1" id="todoList">
+            <a href="#" class="btn21" onclick="showTodo()" id="buttonId"><span class="spn2">Todo</span></a>
+          </button>
+          <button class="but2" id="imageList">
+            <a href="#" class="btn22" onclick="showImage()"><span class="spn2">Images</span></a>
+          </button>
+          <button class="but3" id="completedList">
+            <a href="#" class="btn23" onclick="showStatistics()"><span class="spn2">Statistics</span></a>
+          </button>
+         
+          <div class="ms-auto mt-3">
+          <button class="button type1" onclick="deleteAllTodos()"><div class="btn-txt"><i class="fa-regular fa-trash-can"></i></div></button>
+          </div>
+            </div>
+            
+            <div id="showings" class="animate__animated animate__zoomIn"></div>
+            <div id="images" class="animate__animated animate__slideInRight"></div>
+            <div id="charter" class="animate__animated animate__slideInRight"><canvas id="myChart" style="margin-bottom:10px;"></canvas></div>
+      </div>
+      <div class="modal fade" id="exaModal" tabindex="-1" aria-labelledby="exaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">GOOGLE PRIVACY POLICY</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="fw-bold mb-3">
+                When you use our services, you’re trusting us with your information. We understand this is a big
+                responsibility and work hard to protect your information and put you in control.
+              </div>
+
+              <div class="text-light">
+              This Privacy Policy is meant to help you understand what information we collect, why we collect it, and
+              how you can update, manage, export, and delete your information.
+              </div>
+
+              <div>
+                <div class="fw-bold my-3">We want you to understand the types of information we collect as you use our
+                  services</div>
+
+                  <div class="text-light">
+                We collect information to provide better services to all our users — from figuring out basic stuff like
+                which language you speak, to more complex things like which ads you’ll find most useful, the people who
+                matter most to you online, or which YouTube videos you might like. The information Google collects, and
+                how that information is used, depends on how you use our services and how you manage your privacy
+                controls.
+
+                When you’re not signed in to a Google Account, we store the information we collect with unique
+                identifiers tied to the browser, application, or device you’re using. This allows us to do things like
+                maintain your preferences across browsing sessions, such as your preferred language or whether to show
+                you more relevant search results or ads based on your activity.
+
+                When you’re signed in, we also collect information that we store with your Google Account, which we
+                treat as personal information.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="eModal" tabindex="-1" aria-labelledby="eModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">TERMS</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class=" fs-3 fw-bold mb-3">
+               Service Provider
+              </div>
+
+              <div class="text-light">
+                Google services are provided by, and you’re contracting with:
+
+                Google LLC
+                organized under the laws of the State of Delaware, USA, and operating under the laws of the USA
+                
+                1600 Amphitheatre Parkway
+                Mountain View, California 94043
+                USA
+              </div>
+
+              <div>
+                <div class="fs-3 fw-bold my-3">Age Requirements</div>
+
+                  <div class="text-light">
+                    If you’re under the age required to manage your own Google Account, you must have your parent or legal guardian’s permission to use a Google Account. Please have your parent or legal guardian read these terms with you.
+
+                    If you’re a parent or legal guardian, and you allow your child to use the services, then these terms apply to you and you’re responsible for your child’s activity on the services.
+                    
+                    Some Google services have additional age requirements as described in their service-specific additional terms and policies.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit Todo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="todoId">
+            <input type="text" id="editTitle" class="form-control mb-3" placeholder="Todo">
+            <textarea id="editBody" class="form-control" rows="3" placeholder="Description"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+<!-- <div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <input type="hidden" id="todoId">
+    <label for="editTitle">Title:</label>
+    <input type="text" id="editTitle">
+    <label for="editBody">Body:</label>
+    <textarea id="editBody" rows="4"></textarea>
+    <button onclick="saveChanges()">Save Changes</button>
+  </div>
+</div> -->
+
+    
+
+    
+
+  
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, GithubAuthProvider, TwitterAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      import { getDatabase, ref, set, onValue, push, child, remove, update, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+      import { getStorage, ref as storef, getDownloadURL, deleteObject, uploadBytesResumable, listAll, getMetadata, updateMetadata } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD2eXP2_2eJy1FXI4D2UCusP4gnaPCR0sI",
+        authDomain: "fire-vault-d4b7a.firebaseapp.com",
+        projectId: "fire-vault-d4b7a",
+        storageBucket: "fire-vault-d4b7a.appspot.com",
+        messagingSenderId: "702416801003",
+        appId: "1:702416801003:web:22a415c7cd5216a9f942ae",
+        measurementId: "G-B12P05GL43",
+        databaseURL: "https://fire-vault-d4b7a-default-rtdb.firebaseio.com/"
+      };
+
+      // const database = getDatabase();
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const database = getDatabase(app);
+      const db = getDatabase();
+      const storage = getStorage();
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const uid = user.uid;
+          console.log(`user is signed in, ${uid}`);
+          console.log(user);
+          show.innerHTML = `
+                <p class="user">${user.displayName}😊</p>
+            `;
+          showee.innerHTML = `
+                <p class="userGreet">Hi, ${user.displayName}!</p>
+            `;
+          showy.innerHTML = `
+            <button class="circle-image1" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${user.photoURL}" alt="Profile pic" class="circle-image"></button>
+            `;
+          shower.innerHTML = `
+            <img src="${user.photoURL}" alt="Profile pic" class="circle-image2">`;
+          myModalLabel.innerHTML = `${user.email}`;
+          timer.innerHTML = `Last sign in Time: ${user.metadata.lastSignInTime}`
+        } else {
+          console.log('user is signed out');
+          window.location.href = 'index.html'
+        }
+      })
+      const signOu = () => {
+        signOut(auth)
+          .then(() => {
+            console.log('Logged Out');
+          })
+          .catch(() => {
+            console.log('signing out');
+          })
+      }
+      window.signOu = signOu;
+
+      const submitTodo = () => {
+            let time = new Date().toLocaleTimeString()
+            let date = new Date().toLocaleDateString()
+            // alert("submitted")
+            let inputOne = document.getElementById('todo').value
+            let inputTwo = document.getElementById('todoDes').value
+            // let save = document.getElementById('save')
+
+            if (inputOne === "" || inputTwo === "") {
+               plsInput.style.display = 'block'
+               saves.style.display = 'none'
+               occurError.style.display = 'none'
+               setTimeout(() => {
+                  plsInput.style.display = 'none';
+                    }, 5000);
+            } else {
+                let obj = { time, date, inputOne, inputTwo }
+                let dbRef = ref(database, `todos`)
+                let newDbRef = push(dbRef)
+                let saved = set(newDbRef, obj)
+                if (saved) {
+                    console.log("Saved successfully");
+                    document.getElementById('todo').value = '';
+                    document.getElementById('todoDes').value = '';
+                    saves.style.display = 'block'
+                    plsInput.style.display = 'none'
+                    occurError.style.display = 'none'
+               setTimeout(() => {
+                  saves.style.display = 'none';
+                    }, 5000);
+                } else {
+                  occurError.style.display = 'block'
+                  plsInput.style.display = 'none'
+                  saves.style.display = 'none'
+               setTimeout(() => {
+                occurError.style.display = 'none';
+                    }, 5000);
+                    console.log("failed to save");
+                }
+            }
+        }
+        window.submitTodo = submitTodo
+
+        let newRef = ref(database, `todos`);
+        onValue(newRef, (snapshot) => {
+          
+            let data = snapshot.val();
+            console.log(data);
+            onAuthStateChanged(auth, (user) => {
+            let todoUser = user.displayName
+                console.log(todoUser);
+            showings.innerHTML = '';
+            // Iterate over each todo item in the data
+            for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+                    let todo = data[key]; // Get the todo object
+                    // Append HTML for each todo to the showy element
+                    showings.innerHTML += `
+                    <div class="picture">
+                    <div class="d-flex">
+                <h3 class="text-info headed fw-bolder">${todo.inputOne}</h3>
+                <div class="fonts ms-auto">
+                <i class="fa-solid fa-trash trash me-2" onclick="deleteTodo('${key}')"></i>
+                <i class="fa-solid fa-pen editor text-info" data-bs-toggle="modal" data-bs-target="#editModal" onclick="openModal('${key}', '${todo.inputOne}', '${todo.inputTwo}')"></i>
+                </div>
+                </div>
+                <textarea class="area" rows="2" cols="27" disabled>${todo.inputTwo}</textarea>
+                <i class="todo-time">${todo.time}, ${todo.date}</i><i class="ms-5 todo-time">${todoUser}</i>
+                <hr>
+              </div>
+            `;
+                }
+            }},
+          )
+        });
+
+        function editTodo(todoId, currentTitle, currentBody) {
+  const editTitleInput = document.getElementById('editTitle');
+  const editBodyInput = document.getElementById('editBody');
+
+  editTitleInput.value = currentTitle;
+  editBodyInput.value = currentBody;
+
+  document.getElementById('todoId').value = todoId;
+
+  if (editTitleInput !== null && editBodyInput !== null) {
+    update(ref(database, `todos/${todoId}`), {
+      inputOne: editTitleInput.value, // Fix this line
+      inputTwo: editBodyInput.value,  // Fix this line
+    })
+    .then(() => {
+      alert("Todo updated successfully!");
+    })
+    .catch((error) => {
+      console.error("Error updating todo: ", error);
+    });
+  }
+}
+
+window.editTodo = editTodo;
+
+// Function to open the modal for editing
+function openModal(todoId, currentTitle, currentBody) {
+  const editTitleInput = document.getElementById('editTitle');
+  const editBodyInput = document.getElementById('editBody');
+
+  editTitleInput.value = currentTitle;
+  editBodyInput.value = currentBody;
+
+  // Show the modal
+  const modal = document.getElementById('editModal');
+  modal.style.display = 'block';
+
+  // Store the todoId in a hidden input for later use
+  document.getElementById('todoId').value = todoId;
+}
+
+window.openModal = openModal;
+
+// Function to close the modal
+// function closeModal() {
+//   const modal = document.getElementById('editModal');
+//   modal.style.display = 'none';
+// }
+
+// window.closeModal = closeModal;
+
+// Function to save changes made in the modal
+function saveChanges() {
+  const todoId = document.getElementById('todoId').value;
+  const newTitle = document.getElementById('editTitle').value;
+  const newBody = document.getElementById('editBody').value;
+
+  // Call the editTodo function with new values
+  editTodo(todoId, newTitle, newBody);
+  // const modal = document.getElementById('editModal');
+  // modal.style.display = 'none';
+}
+
+window.saveChanges = saveChanges;
+
+
+      // Render todos initially
+      renderTodos();
+
+      function renderTodos() {
+        showings.innerHTML = "";
+        const todosRef = ref(database, "todos");
+
+        onValue(todosRef, (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            const todoKey = childSnapshot.key;
+            const todoData = childSnapshot.val();
+
+            const todoElement = document.createElement("div");
+            todoElement.innerHTML = `
+      <div class="todo">
+        <h3 class="todo-title">${todoData.inputOne}</h3>
+        <textarea class="area" rows="2" cols="27" disabled>${todoData.inputTwo}</textarea>
+        <button onclick="openModal('${todoKey}', '${todoData.inputOne}', '${todoData.inputTwo}')">Edit</button>
+        <button onclick="deleteTodo('${todoKey}')">Delete</button>
+      </div>
+    `;
+
+            // Appends todo element to the container
+            showings.appendChild(todoElement);
+          });
+        });
+      }
+
+        const deleteTodo = (todoKey) => {
+          const isConfirmed = confirm("Are you sure you want to delete todo Item?");
+          if (isConfirmed) {
+            let todoRef = ref(database, `todos/${todoKey}`);
+            remove(todoRef)
+                .then(() => {
+                    console.log("Todo deleted successfully");
+                })
+                .catch(error => {
+                    console.error("Error deleting todo:", error);
+                });
+            alert("Item removed from your list.🙂")
+          }
+           
+        }
+        window.deleteTodo = deleteTodo
+
+        const deleteAllTodos = () => {
+    const isConfirmed = confirm("Are you sure you want to delete all todos?");
+    
+    if (isConfirmed) {
+        const todosRef = ref(database, 'todos');
+        remove(todosRef)
+            .then(() => {
+                console.log("All todos deleted successfully");
+            })
+            .catch(error => {
+                console.error("Error deleting all todos:", error);
+            });
+    }
+};
+        
+window.deleteAllTodos = deleteAllTodos;
+
+
+
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+// const submitFile = async () => {
+//     let incomingFile = document.getElementById('filey').files[0];
+//     let imageDescription = document.getElementById('imageDescription').value.trim();
+
+//     if (!incomingFile) {
+//         console.error('No file selected!');
+//         return;
+//     } else {
+//         document.getElementById('filey').value = '';
+//         // Clear description textarea
+//         document.getElementById('imageDescription').value = '';
+//     }
+
+//     onAuthStateChanged(auth, async (user) => {
+//         let progress = document.getElementById('progress');
+//         let filedUser = user.displayName;
+//         console.log(filedUser);
+
+//         let storageref = storef(storage, `${filedUser}/${incomingFile.name}`);
+//         let task = uploadBytesResumable(storageref, incomingFile);
+
+//         progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
+//         progress.style.display = "block";
+
+//         console.log('Uploading...'); // Show a loading indicator
+
+//         try {
+//             task.on('state_changed', (snapshot) => {
+//                 const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
+//                 progress.innerHTML = `<div class="spinnerContainer">
+//                 <div class="spinner"></div>
+//                 <div class="loader">
+//                     <p>${progressValue}% </p>
+//                     <div class="words">
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">File</span>
+//                         <span class="word">Uploaded</span>
+//                     </div>
+//                 </div>
+//                 </div>`;
+//             });
+
+//             await task; // Wait for the upload to finish
+//             const downloadURL = await getDownloadURL(storageref);
+
+//             progress.style.display = "none";
+
+//             // Update file statistics based on the type of uploaded file
+//             let fileType;
+//             if (incomingFile.type.startsWith('image/')) {
+//                 fileType = 'Images';
+//             } else if (incomingFile.type.startsWith('video/')) {
+//                 fileType = 'Videos';
+//             } else if (incomingFile.type.startsWith('audio/')) {
+//                 fileType = 'Audio';
+//             } else {
+//                 fileType = 'Others';
+//             }
+//             handleFileUpload(fileType);
+
+//             // Display uploaded image
+//             let fileElement;
+//             if (incomingFile.type.startsWith('image/')) {
+//                 fileElement = document.createElement('img');
+//             } else if (incomingFile.type.startsWith('video/')) {
+//                 fileElement = document.createElement('video');
+
+//                 fileElement.controls = true; // Add controls for video playback
+//             } else if (incomingFile.type.startsWith('audio/')) {
+//                 fileElement = document.createElement('audio');
+
+//                 fileElement.controls = true; // Add controls for audio playback
+//               } else if (incomingFile.type.startsWith('application/pdf')) {
+//     // For PDF files
+//     fileElement = document.createElement('a');
+//     fileElement.href = URL.createObjectURL(incomingFile);
+//     fileElement.textContent = 'Download PDF';
+//     fileElement.download = incomingFile.name; // Set the file name for download
+//     // Optionally, you can open the PDF in a new tab instead of downloading it
+//     // fileElement.target = '_blank';
+//     // fileElement.textContent = 'View PDF';
+// } else if (incomingFile.type.startsWith('application/msword') || incomingFile.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+//     // For Word documents (doc, docx)
+//     fileElement = document.createElement('a');
+//     fileElement.href = URL.createObjectURL(incomingFile);
+//     fileElement.textContent = 'Download Word Document';
+//     fileElement.download = incomingFile.name; // Set the file name for download
+// } else {
+//                 console.warn('Unsupported file type:', incomingFile.type);
+//                 return;
+//             }
+
+//             fileElement.src = downloadURL;
+//             fileElement.alt = `${filedUser} File`;
+//             fileElement.classList.add('uploaded-file');
+//             images.innerHTML += '';
+//             images.appendChild(fileElement);
+
+//             let fileInfo = document.createElement('p');
+//             fileInfo.innerHTML += `
+//             <div class="d-flex class">
+//             <div>
+//             <div>File name:<span class="des"> ${incomingFile.name}</span></div>
+//             <div>File type:<span class="des"> ${incomingFile.type}</span></div>
+//             <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
+//             <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
+//             </div>
+//             <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
+//             </div>
+//             `;
+//             images.appendChild(fileInfo);
+
+//             // Display image description if provided
+//             if (imageDescription) {
+//                 let descriptionElement = document.createElement('p');
+//                 descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
+//                 images.appendChild(descriptionElement);
+//             }
+//             saver.style.display = 'block'
+//             errorLoader.style.display = 'none'
+//             setTimeout(() => {
+//                   saver.style.display = 'none';
+//                     }, 5000);
+//             console.log('File uploaded successfully:', downloadURL);
+//             () => {
+//     // Upload completed successfully, now we can get the download URL
+//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+//       console.log('File available at', downloadURL);
+//     });
+//   }
+//         } catch (error) {
+//           saver.style.display = 'none'
+//             errorLoader.style.display = 'block'
+//             setTimeout(() => {
+//                   errorLoader.style.display = 'none';
+//                     }, 5000);
+//             console.error('Error uploading file:', error);
+//             // Handle errors appropriately, e.g., display an error message
+//         }
+//     });
+// };
+
+// window.submitFile = submitFile;
+
+// onAuthStateChanged(auth, (user) => {
+//     let userUid = user.uid;
+//     console.log(userUid);
+    
+//     // Display files
+//     displayFiles(userUid, 'Image', '#image', 'showFileHere');
+//     displayFiles(userUid, 'Video', '#video', 'showFileHere2');
+//     displayFiles(userUid, 'Audio', '#audio', 'showFileHere3');
+// });
+
+// function displayFiles(userUid, fileType, fileTypeSelector, fileContainer) {
+//     const listRef = ref(storage, `${userUid}/${fileType}/`);
+//     listAll(listRef)
+//         .then((res) => {
+//             res.items.forEach((itemRef, index) => {
+//                 getDownloadURL(ref(itemRef))
+//                     .then((url) => {
+//                         console.log(url);
+//                         const fileName = itemRef.name;
+//                         const fileData = { fileName, url, fileType };
+//                         displayFileOnScreen(fileContainer, index, fileName, fileData);
+//                     })
+//                     .catch((error) => {
+//                         console.error(error);
+//                     });
+//             });
+//             if (res.items.length > 0) {
+//                 document.querySelector(`${fileTypeSelector} h1`).style.display = 'none';
+//             }
+//         })
+//         .catch((error) => {
+//             console.error(error);
+//         });
+// }
+
+// function displayFileOnScreen(containerId, index, fileName, fileData) {
+//     const showFileHere = document.getElementById(containerId);
+//     showFileHere.innerHTML += `
+//         <p onclick="showMyFile('${fileName}', '${fileData.url}', '${fileData.fileType}')">${index + 1}. ${fileName}</p>
+//     `;
+// }
+
+// // Function to display the exact file type
+// function showMyFile(fileName, url, fileType) {
+//     const exactFile = document.getElementById('exactFile');
+//     if (fileType.startsWith('image/')) {
+//         exactFile.innerHTML = `<img src="${url}" alt="${fileName}"/>`;
+//     } else if (fileType.startsWith('video/')) {
+//         exactFile.innerHTML = `<video src="${url}" controls ></video>`;
+//     } else if (fileType.startsWith('audio/')) {
+//         exactFile.innerHTML = `<audio src="${url}" controls ></audio>`;
+//     }
+// }
+
+// // Function to submit file
+// const submitFile = () => {
+//     let incomingFile = document.getElementById('filey').files[0];
+//     let imageDescription = document.getElementById('imageDescription').value.trim();
+
+//     if (!incomingFile) {
+//         console.error('No file selected!');
+//         return;
+//     } else {
+//         document.getElementById('filey').value = '';
+//         // Clear description textarea
+//         document.getElementById('imageDescription').value = '';
+//     }
+
+//     const user = auth.currentUser;
+//     const userUid = user.uid;
+
+//     let fileType;
+//     if (incomingFile.type.startsWith('image/')) {
+//         fileType = 'Image';
+//     } else if (incomingFile.type.startsWith('video/')) {
+//         fileType = 'Video';
+//     } else if (incomingFile.type.startsWith('audio/')) {
+//         fileType = 'Audio';
+//     } else {
+//         console.warn('Unsupported file type:', incomingFile.type);
+//         return;
+//     }
+
+//     let storageRef = storef(storage, `${userUid}/${fileType}/${incomingFile.name}`);
+//     let task = uploadBytesResumable(storageRef, incomingFile);
+
+//     // Continue with the rest of your file upload logic...
+// };
+
+// window.submitFile = submitFile;
+
+const submitFile = () => {
+    let incomingFile = document.getElementById('filey').files[0];
+    let imageDescription = document.getElementById('imageDescription').value.trim();
+
+    if (!incomingFile) {
+        console.error('No file selected!');
+        return;
+    } else {
+        document.getElementById('filey').value = '';
+        // Clear description textarea
+        document.getElementById('imageDescription').value = '';
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+        let progress = document.getElementById('progress');
+        let filedUser = user.displayName;
+        console.log(filedUser);
+
+        let fileType;
+        if (incomingFile.type.startsWith('image/')) {
+            fileType = 'Images';
+        } else if (incomingFile.type.startsWith('video/')) {
+            fileType = 'Videos';
+        } else if (incomingFile.type.startsWith('audio/')) {
+            fileType = 'Audio';
+        } else {
+            fileType = 'Others';
+        }
+
+        let storageRef = storef(storage, `${filedUser}/${incomingFile.name}`);
+        let task = uploadBytesResumable(storageRef, incomingFile);
+
+        progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
+        progress.style.display = "block";
+
+        console.log('Uploading...'); // Show a loading indicator
+
+        try {
+            task.on('state_changed', (snapshot) => {
+                const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
+                progress.innerHTML = `<div class="spinnerContainer">
+                <div class="spinner"></div>
+                <div class="loader">
+                    <p>${progressValue}% </p>
+                    <div class="words">
+                        <span class="word">Uploaded</span>
+                        <span class="word">Uploaded</span>
+                        <span class="word">Uploaded</span>
+                        <span class="word">File</span>
+                        <span class="word">Uploaded</span>
+                    </div>
+                </div>
+                </div>`;
+            });
+
+            await task; // Wait for the upload to finish
+            const downloadURL = await getDownloadURL(storageRef);
+
+            progress.style.display = "none";
+
+            // Save file information to Firestore
+            const fileData = {
+                fileName: incomingFile.name,
+                fileType: fileType,
+                downloadURL: downloadURL,
+                description: imageDescription || ""
+            };
+
+            // const docRef = doc(firestore, "files", filedUser);
+            // await setDoc(docRef, fileData);
+
+            // Display uploaded image
+            let fileElement;
+            if (incomingFile.type.startsWith('image/')) {
+                fileElement = document.createElement('img');
+                fileElement.src = downloadURL;
+                fileElement.alt = `${filedUser} File`;
+                fileElement.classList.add('uploaded-file');
+                images.innerHTML += '';
+                images.appendChild(fileElement);
+            }
+
+            let fileInfo = document.createElement('p');
+            fileInfo.innerHTML += `
+            <div class="d-flex class">
+            <div>
+            <div>File name:<span class="des"> ${incomingFile.name}</span></div>
+            <div>File type:<span class="des"> ${incomingFile.type}</span></div>
+            <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
+            <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
+            </div>
+            <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
+            </div>
+            `;
+            images.appendChild(fileInfo);
+
+            // Display image description if provided
+            if (imageDescription) {
+                let descriptionElement = document.createElement('p');
+                descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
+                images.appendChild(descriptionElement);
+            }
+            saver.style.display = 'block'
+            errorLoader.style.display = 'none'
+            setTimeout(() => {
+                  saver.style.display = 'none';
+                    }, 5000);
+            console.log('File uploaded successfully:', downloadURL);
+        } catch (error) {
+            saver.style.display = 'none'
+            errorLoader.style.display = 'block'
+            setTimeout(() => {
+                errorLoader.style.display = 'none';
+            }, 5000);
+            console.error('Error uploading file:', error);
+            // Handle errors appropriately, e.g., display an error message
+        }
+    });
+};
+
+window.submitFile = submitFile;
+let incomingFile = document.getElementById('filey').files[0];
+// let toDelete = incomingFile
+
+const deleteFile = () => {
+  // Get the file name
+  const fileName = incomingFile.name;
+    // Check if a file is selected
+    if (!incomingFile) {
+        console.error("No file selected for deletion");
+        return;
+    }
+
+    
+
+    // Construct the full path to the file
+    const filePath = 'path/to/your/folder/' + fileName; // Replace 'path/to/your/folder/' with your actual folder path
+
+    // Create a reference to the file
+    const fileRef = ref(storage, filePath);
+
+    // Delete the file
+    deleteObject(fileRef)
+        .then(() => {
+            alert("File deleted successfully");
+        })
+        .catch((error) => {
+            console.error("Error deleting file:", error);
+        });
+}
+
+
+// Assuming you have 'filedUser' defined somewhere before
+
+// const deleteFile = (filePath) => {
+//   const user = auth.currentUser;
+//   const filedUser = user.displayName;
+//   const fileRef = storef(storage, `${filedUser}/${filePath}`);
+
+//     // Delete the file
+//     deleteObject(fileRef)
+//         .then(() => {
+//             // File deleted successfully
+//             console.log("File deleted successfully");
+
+//             // Clear description element
+//             const descriptionElement = document.getElementById('imageDescription');
+//             descriptionElement.innerHTML = '';
+
+//             // Clear file info
+//             const fileInfo = document.getElementById('images');
+//             fileInfo.innerHTML = '';
+//         })
+//         .catch((error) => {
+//             // Uh-oh, an error occurred!
+//             console.error("Error deleting file:", error);
+//         });
+// };
+
+// Function to handle delete button click
+const handleDeleteButtonClick = (filePath) => {
+    // Call deleteFile function with the file path
+    deleteFile(filePath);
+};
+window.handleDeleteButtonClick = handleDeleteButtonClick;
+
+
+
+    </script>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"></script>
+
+</body>
+</html>

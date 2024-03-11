@@ -1,0 +1,979 @@
+.body{
+  background-color: #181818;
+  overflow-x: hidden;
+}
+.button1 {
+    position: relative;
+    padding: 12px 35px;
+    background: cyan;
+    font-size: 17px;
+    font-weight: 500;
+    color: #181818;
+    border: 3px solid #65EDFF;
+    border-radius: 8px;
+    box-shadow: 0 0 0 blue;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .star-1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+  }
+  
+  .star-2 {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-3 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-4 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 cyan);
+    z-index: -5;
+    transition: all 0.8s ease;
+  }
+  
+  .button1:hover {
+    background: transparent;
+    color: #65EDFF;
+    box-shadow: 0 0 25px cyan;
+    border-radius: 2%;
+  }
+  
+  .button1:hover .star-1 {
+    position: absolute;
+    top: -80%;
+    left: -30%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 10px cyan);
+    z-index: 2;
+  }
+  
+  .button1:hover .star-2 {
+    position: absolute;
+    top: -25%;
+    left: 10%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px cyan);
+    z-index: 2;
+  }
+  
+  .button1:hover .star-3 {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px cyan);
+    z-index: 2;
+  }
+  
+  .button1:hover .star-4 {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 10px cyan);
+    z-index: 2;
+  }
+  
+  .button1:hover .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 115%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px cyan);
+    z-index: 2;
+  }
+  
+  .button1:hover .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .fil0 {
+    fill: #fffdef;
+  }
+
+  .storage {
+    display: none;
+  }
+  .back{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    background-color: transparent;
+    background: inherit;
+    border: 5px solid cyan;
+    border-radius: 10px;
+    padding: 1%;
+    color: white;
+  }
+  .butt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .glitch {
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    font-family: monospace;
+}
+.circle-image {
+  border-radius: 50%; 
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.circle-image2 {
+  border-radius: 50%; 
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+.circle-image1:hover{
+  background-color: cyan;
+  transition: 0.5s;
+}
+.circle-image1{
+  background-color: transparent;
+  width: 70px;
+  height: 65px;
+  border-radius: 60%;
+  border: none;
+}
+.welcome{
+  margin-top: 20vh;
+  text-align: center;
+  color: cyan;
+  font-size: 90px;
+}
+.user{
+  text-align: center;
+  color: cyan;
+  font-size: 50px;
+}
+.glad{
+  color: lime;
+}
+#timer{
+  font-size: 10px;
+}
+.modal{
+  color: cyan;
+}
+.userGreet{
+  font-size: 26px;
+}
+span:hover{
+  color: lime;
+  cursor: pointer;
+}
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(-2px, 0) skewX(-2deg);
+    animation: glitch 1s linear infinite alternate;
+}
+
+.glitch {
+    color: white;
+    text-shadow: -2px 0 blue, 2px 0 cyan;
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: none;
+        transform: translate(-2px, 0) skewX(-2deg);
+    }
+    25% {
+        clip-path: inset(0 0 50% 0);
+        transform: translate(-2px, -2px) skewX(-1deg);
+    }
+    50% {
+        clip-path: inset(0 0 0 50%);
+        transform: translate(-2px, 0) skewX(1deg);
+    }
+    75% {
+        clip-path: inset(50% 0 0 0);
+        transform: translate(2px, 2px) skewX(2deg);
+    }
+    100% {
+        clip-path: none;
+        transform: translate(2px, 0) skewX(2deg);
+    }
+}
+.glitch2::before,
+.glitch2::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(-2px, 0) skewX(-2deg);
+    animation: glitch2 1s linear infinite alternate;
+}
+
+.glitch2 {
+    color: white;
+    text-shadow: -2px 0 blue, 2px 0 cyan;
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    font-family: monospace;
+}
+
+@keyframes glitch2 {
+    0% {
+        clip-path: none;
+        transform: translate(-2px, 0) skewX(-2deg);
+    }
+    25% {
+        clip-path: inset(0 0 50% 0);
+        transform: translate(-2px, -2px) skewX(-1deg);
+    }
+    50% {
+        clip-path: inset(0 0 0 50%);
+        transform: translate(-2px, 0) skewX(1deg);
+    }
+    75% {
+        clip-path: inset(50% 0 0 0);
+        transform: translate(2px, 2px) skewX(2deg);
+    }
+    100% {
+        clip-path: none;
+        transform: translate(2px, 0) skewX(2deg);
+    }
+}
+.bach{
+  background-color: #181818;
+}
+#plsInput{
+  color: rgb(248, 36, 36);
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: none;
+}
+#saves{
+  color: lime;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: none;
+}
+#occurError, #errorLoader{
+  color: rgb(253, 60, 60);
+  font-weight: 600;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: none;
+}
+.input {
+  background: -webkit-linear-gradient(to right, #212121, cyan, #C6FFDD);
+  background: linear-gradient(to right, #4e7679, cyan, #C6FFDD);
+  background-repeat: no-repeat;
+  border-radius: 89% 29% 90% 20% / 0% 100% 0% 100%;
+  border-color: transparent;
+  width: 100%;
+  height: 50px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 1000;
+  font-size: 20px;
+  font-family: inherit;
+}
+.inpu{
+  background: -webkit-linear-gradient(to right, #212121, cyan, #C6FFDD);
+  background: linear-gradient(to right, #4e7679, cyan, #C6FFDD);
+  border-radius: 89% 29% 90% 15% / 0% 100% 0% 100%;
+  width: 500px;
+  padding-left: 6%;
+  padding-right: 14%;
+  font-weight: bold;
+}
+.inpu::placeholder{
+  color: white;
+}
+
+.input::placeholder {
+  color: white;
+}
+.buttons {
+  padding: 9px 29px;
+  border: unset;
+  width: 200px;
+  border-radius: 89% 29% 90% 15% / 0% 100% 0% 100%;
+  color: #212121;
+  z-index: 1;
+  background: #C6FFDD;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  flex: 1 0 5rem;
+ }
+ 
+ .buttons::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 89% 29% 90% 3% / 0% 100% 0% 100%;
+  background-color: rgb(73, 202, 202);
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .buttons:hover {
+  color: #e8e8e8;
+ }
+ 
+ .buttons:hover::before {
+  width: 100%;
+ }
+ #dell{
+  text-align: center;
+  color: lime;
+  font-size: 18px;
+  z-index: 1;
+ }
+ #saver{
+  display: none;
+  color: lime;
+  font-size: 19px;
+ }
+ .statistic{
+  background-color: transparent;
+  background: inherit;
+  border: 3px solid cyan;
+  height: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+ }
+ 
+::-webkit-scrollbar {
+  width: 7px
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: blue;
+  border-radius: 40%;
+}
+ /* .input::placeholder{
+  color: whitesmoke;
+  font-size: 20px;
+ } */
+ .headed{
+  margin-right: 10%;
+ }
+ .fonts{
+  margin-top: 8px;
+  font-size: 20px;
+ }
+ .trash{
+  color: rgb(253, 49, 49);
+  cursor: pointer;
+ }
+ .trash:hover{
+  transition: 0.3s;
+  scale: 1.3;
+ }
+ .editor{
+  color: aqua;
+  cursor: pointer;
+ }
+ .editor:hover{
+  transition: 0.3s;
+  scale: 1.3;
+ }
+ .todo-time{
+  font-size: 13px;
+  color: cyan;
+ }
+ #charter{
+  display: none;
+ }
+ 
+.file-upload-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: cyan;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.file-upload-icon {
+  color: blue;
+  font-size: 1.5rem;
+  cursor: pointer !important;
+}
+.file-upload-icon:hover{
+  color: aliceblue;
+}
+.uploaded-file {
+  max-width: 100%; /* Ensure the file fits within the container */
+    height: 50%; /* Allow the height to adjust based on aspect ratio */
+    display: block; /* Make sure it respects width and height */
+  margin-bottom: 10px; /* Add some space between images */
+}
+.class:hover{
+  background-color: #212121;
+  transition: 0.4s;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.des{
+  color: cyan;
+  font-size: 20px;
+}
+.imag{
+  font-size: 18px;
+}
+
+.plusButton {
+  --plus_sideLength: 50px;
+  --plus_topRightTriangleSideLength: 0.9rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid cyan;
+  width: var(--plus_sideLength);
+  height: var(--plus_sideLength);
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.plusButton::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+  border-style: solid;
+  border-color: transparent cyan transparent transparent;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover {
+  cursor: pointer;
+}
+
+.plusButton:hover::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton:focus-visible::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton>.plusIcon {
+  fill: cyan;
+  width: calc(var(--plus_sideLength) * 0.7);
+  height: calc(var(--plus_sideLength) * 0.7);
+  z-index: 1;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
+
+.plusButton:focus-visible>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
+#images{
+  display: none;
+}
+#showings{
+  display: block;
+}
+.picture:hover{
+  background-color: rgb(48, 46, 46);
+  transition: 0.5s;
+  padding: 1%;
+}
+
+ .work{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ .container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+ }
+ .myModalLabel{
+  font-size: 20px;
+}
+.btn21, .btn22, .btn23 {
+  position: relative;
+  display: inline-block;
+  padding: 6px 20px;
+  border: 2px solid cyan;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.btn21::before, .btn22::before, .btn23::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% - -2px);
+  background-color: #181818;
+  transition: 0.3s ease-out;
+  transform: scaleY(1);
+}
+
+.btn21::after, .btn22::after, .btn23::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% - 50px);
+  background-color: transparent;
+  transition: 0.3s ease-out;
+  transform: scaleY(1);
+}
+
+.btn21:hover::before, .btn22:hover::before, .btn23:hover::before {
+  transform: translateY(-25px);
+  height: 0;
+}
+
+.btn21:hover::after, .btn22:hover::after, .btn23:hover::after {
+  transform: scaleX(0);
+  transition-delay: 0.15s;
+}
+
+.btn21:hover, .btn22:hover, .btn23:hover {
+  border: 2px solid cyan;
+}
+
+.btn21 span, .btn22 span, .btn23 span {
+  position: relative;
+  z-index: 3;
+}
+.btn21:focus, .btn22:focus, .btn23:focus{
+ border: 2px solid lime
+}
+.but1, .but2, .but3 {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+.button {
+ width: 50px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid rgb(171, 243, 243);
+  overflow: hidden;
+  border-radius: 30px;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-txt {
+  z-index: 1;
+  font-weight: 800;
+}
+
+.type1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: #333;
+  border-radius: 30px;
+  visibility: hidden;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+}
+
+.button:hover {
+  box-shadow: 1px 1px 200px #252525;
+  color: rgb(223, 60, 60);
+  border: none;
+}
+
+.area{
+  background-color: transparent !important;
+  background: inherit;
+  color: whitesmoke;
+  border: none;
+}
+
+.type1:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}
+
+.spinnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #299fff;
+  animation: tri-spinner 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: tri-spinner 2s infinite;
+}
+
+.spinner::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+
+@keyframes tri-spinner {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.loader {
+  color: #4a4a4a;
+  font-family: "Poppins",sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 40px;
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 8px;
+}
+
+.words {
+  overflow: hidden;
+}
+
+.word {
+  display: block;
+  height: 100%;
+  padding-left: 6px;
+  color: #299fff;
+  animation: cycle-words 5s infinite;
+}
+
+@keyframes cycle-words {
+  10% {
+    -webkit-transform: translateY(-105%);
+    transform: translateY(-105%);
+  }
+
+  25% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  35% {
+    -webkit-transform: translateY(-205%);
+    transform: translateY(-205%);
+  }
+
+  50% {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+  }
+
+  60% {
+    -webkit-transform: translateY(-305%);
+    transform: translateY(-305%);
+  }
+
+  75% {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%);
+  }
+
+  85% {
+    -webkit-transform: translateY(-405%);
+    transform: translateY(-405%);
+  }
+
+  100% {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%);
+  }
+}
+
+
+ @media (max-width: 1200px) {
+  .welcome{
+    font-size: 40px;
+  }
+  .user{
+    font-size: 30px;
+  }
+  .glitch2{
+    font-size: 20px;
+  }
+  .circle-image, .circle-image1{
+    width: 50px;
+    height: 50px;
+  }
+  .back{
+    padding: none;
+    display: flex;
+    width: 90%;
+    margin-top: 10%;
+  }
+  .input, .inpu{
+    width: 100%;
+    border-radius: 20px;
+  }
+  .inpu{
+    padding-right: 2%;
+    padding-left: 2%;
+  }
+  .btn21, .btn22, .btn23{
+    width: 25%;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font-size: 18px;
+    padding: 2px;
+  }
+ }
+
+ @media (max-width: 800px){
+  .input, .inpu{
+    width: 86%;
+    margin-left: 6.7%;
+  }
+  .input::placeholder{
+    font-size: 15px;
+  }
+  .butter{
+    margin-left: 9%;
+    width: 80%;
+  }
+ }
+ 
+ @media (max-width: 550px) {
+  .input, .inpu{
+    width: 116%;
+    margin-left: -8.7%;
+  }
+  .input::placeholder{
+    font-size: 15px;
+  }
+  .butter{
+    margin-left: 0%;
+    width: 100%;
+  }
+  .myModalLabel{
+    font-size: 15px;
+  }
+ }
+ @media (max-width: 440px) {
+  #plsInput, #saver, #saves, #errorLoader, #occurError{
+    font-size: 16px;
+    text-align: center;
+  }
+  .input, .inpu{
+    width: 86%;
+    margin-left: 6.7%;
+  }
+  .input::placeholder{
+    font-size: 15px;
+  }
+  .butter{
+    margin-left: 9%;
+    width: 80%;
+  }
+  .btn21, .btn22, .btn23{
+    width: 25%;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    font-size: 15px;
+    padding: 2px;
+  }
+  
+ }
+ @media (max-width: 390px) {
+  #plsInput, #saver, #saves, #errorLoader, #occurError{
+    font-size: 16px;
+    text-align: center;
+  }
+  .input, .inpu{
+    width: 86%;
+    margin-left: 6.7%;
+  }
+  .input::placeholder{
+    font-size: 15px;
+  }
+  .butter{
+    margin-left: 9%;
+    width: 80%;
+  }
+  .btn21, .btn22, .btn23{
+    font-size: 12px;
+  }
+ }
+ @media (max-width: 300px) {
+  #plsInput, #saver, #saves #errorLoader, #occurError{
+    font-size: 16px;
+    text-align: center;
+  }
+  .welcome{
+    font-size: 30px;
+  }
+  .input, .inpu{
+    width: 66%;
+    margin-left: 17%;
+  }
+  .input::placeholder{
+    font-size: 15px;
+  }
+  .butter{
+    margin-left: 15%;
+  }
+  .file-upload-container{
+    margin-right: 5%;
+    width: 15%;
+  }
+  .buttons{
+    margin-left: 6%;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .buttons::before{
+    border-radius: 10px;
+  }
+  .btn21, .btn22, .btn23{
+    font-size: 12px;
+    margin-right: 10%;
+  }
+  .button{
+    width: 25px;
+    border: none;
+    margin: 0 0 15px 20px;
+  }
+ }

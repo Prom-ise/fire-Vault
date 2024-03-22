@@ -19,6 +19,15 @@ document.getElementById('greetings')
   storage.style.display = 'block'
  }
 
+
+ document.addEventListener("DOMContentLoaded", function() {
+  var impo = document.getElementById('impo');
+  
+  setTimeout(function() {
+    impo.style.display = 'none';
+  }, 10000); 
+});
+
 document.getElementById('images')
 document.getElementById('showings')
  const showTodo = () => {
@@ -55,7 +64,7 @@ let fileStatistics = {
    updateChart();
  };
  
- // Function to update the chart with the new statistics
+
  const updateChart = () => {
    // Extract labels and values from fileStatistics object
    const labels = Object.keys(fileStatistics);
@@ -86,10 +95,10 @@ let fileStatistics = {
      title: {
        display: true,
        text: "File Upload Statistics",
-       fontFamily: "Arial", // Specify font family
-      fontSize: 20,         // Specify font size (in pixels)
-      fontColor: "cyan",    // Specify font color
-      fontStyle: "bold",    // Specify font style (e.g., normal, italic, bold)
+       fontFamily: "Arial", 
+      fontSize: 20,         
+      fontColor: "cyan",   
+      fontStyle: "bold",  
       padding: 20  
      }
    }

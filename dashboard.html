@@ -101,29 +101,15 @@
         </div>
       </button>
     </div>
-<<<<<<< HEAD
   </div>
   
   <div class="storage" id="storage">
     <div class="d-flex mt-3">
       <div class="ms-5 glitch2 animate__animated animate__backInLeft" data-text="AUTH-VAULT">AUTH-VAULT</div>
-      <div class="ms-auto me-5" id="showy"></div>
-=======
-    <div class="my-3 shadow-sm p-3 m-5">
-        <h4 class="my-3 text-center">To Do Application</h4>
-        <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center bg-success text-light w-50"
-            style="display: none;" id="save">Saved successfully!😁😁😅</div>
-        <input type="text" placeholder="TO DO" class="my-2 form-control bg-primary text-light shadow-none" id="todo">
-        <input type="text" placeholder="TO DO DESCRIPTION" class="my-2 form-control bg-primary text-light shadow-none"
-            id="todoDes">
-        <input type="file" class="my-2 form-control" id="filey">
-        <button class="btn btn-info w-100" onclick="submitTodo()">Submit</button>
-        <button class="btn btn-info w-100 my-3" onclick="submitFile()">Submit File</button>
-    </div>
-    <div id="showy" class="text-center shadow-sm p-3 m-5 my-3">
->>>>>>> d3a21e4fcf1af527c90f37fb7870fad6c13acfaa
-    </div>
-
+      <div class="ms-auto d-flex">
+        <h1 class="fs-1 impo me-2" id="impo">👉</h1>
+      <div class="me-5" id="showy"></div>
+      </div>
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1e1f20;">
@@ -152,6 +138,7 @@
         </div>
       </div>
     </div>
+    </div>
 
     
     <div class="row gap-5 work mt-4">
@@ -159,14 +146,14 @@
       <div class="col-lg-5 container col-md-5 col-9 back animate__animated animate__flipInY">
         <div id="progress"></div>
         <div id="plsInput" class="animate__animated animate__headShake">Tell me your to-do! (Optional details welcome.)</div>
+        <div id="plsInputFile" class="animate__animated animate__headShake">Input your file! Feel free to add description</div>
         <div id="saves" class="animate__animated animate__tada animate__repeat-2">Let's go! Your todo is safe and sound. 😊</div>
         <div id="saver" class="animate__animated animate__tada animate__repeat-2">Way to go! Your file is safe and sound.</div>
         <div id="errorLoader" class="animate__animated animate__jello animate__repeat-2">Uh oh! An error occured while uploading your file. Pls try again</div>
         <div id="occurError" class="animate__animated animate__jello">An error occurred while saving your to-do. Please try again.</div>
         <div>
           <input type="text" autocomplete="off" placeholder="Write down your next to-do" name="text" class="input" id="todo">
-          <textarea class="inpu mt-3" placeholder="Tell me more about your to-do! (Optional)" rows="3" cols="10" id="todoDes">
-  </textarea>
+          <input class="input mt-3" placeholder="Tell me more about your to-do! (Optional)" id="todoDes">
           <div class="butter gap-2 my-3 d-flex">
             <button class="buttons me-2" onclick="submitTodo()">SUBMIT</button>
             <div class="file-upload-container">
@@ -206,6 +193,7 @@
           <button class="button type1" onclick="deleteAllTodos()"><div class="btn-txt"><i class="fa-regular fa-trash-can"></i></div></button>
           </div>
             </div>
+            <div class="text-center sticky-top del-succ animate__animated animate__headShake" id="delSucc">Todo Item Removed Successfully 😊</div>
             
             <div id="showings" class="animate__animated animate__zoomIn"></div>
             <div id="images" class="animate__animated animate__slideInRight"></div>
@@ -295,40 +283,25 @@
 
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content bg-black">
           <div class="modal-header">
             <h5 class="modal-title" id="editModalLabel">Edit Todo</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <input type="hidden" id="todoId">
-            <input type="text" id="editTitle" class="form-control mb-3" placeholder="Todo">
-            <textarea id="editBody" class="form-control" rows="3" placeholder="Description"></textarea>
+            <input type="text" id="editTitle" class="w-100 rounded-3 border-none fw-bold bg-info mb-3 py-2" placeholder="Todo">
+            <!-- <textarea id="editBody" class="form-control" rows="3" placeholder="Description"></textarea> -->
+            <input type="text" id="editBody" class="w-100 rounded-3 border-none fw-bold bg-info py-2" placeholder ="Description">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Save changes</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal" onclick="saveChanges()">Save changes</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal -->
-<!-- <div id="editModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <input type="hidden" id="todoId">
-    <label for="editTitle">Title:</label>
-    <input type="text" id="editTitle">
-    <label for="editBody">Body:</label>
-    <textarea id="editBody" rows="4"></textarea>
-    <button onclick="saveChanges()">Save Changes</button>
-  </div>
-</div> -->
-
-    
-
-    
 
   
     <script type="module">
@@ -368,7 +341,15 @@
                 <p class="userGreet">Hi, ${user.displayName}!</p>
             `;
           showy.innerHTML = `
-            <button class="circle-image1" data-bs-toggle="modal" data-bs-target="#myModal"><img src="${user.photoURL}" alt="Profile pic" class="circle-image"></button>
+          <button class="circle-image1" data-bs-toggle="modal" data-bs-target="#myModal">
+    <div class="position-relative">
+        <img src="${user.photoURL}" alt="Profile pic" class="circle-image">
+        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+        </span>
+    </div>
+</button>
+
             `;
           shower.innerHTML = `
             <img src="${user.photoURL}" alt="Profile pic" class="circle-image2">`;
@@ -456,7 +437,7 @@
                 <i class="fa-solid fa-pen editor text-info" data-bs-toggle="modal" data-bs-target="#editModal" onclick="openModal('${key}', '${todo.inputOne}', '${todo.inputTwo}')"></i>
                 </div>
                 </div>
-                <textarea class="area" rows="2" cols="27" disabled>${todo.inputTwo}</textarea>
+                <p>${todo.inputTwo}</p>
                 <i class="todo-time">${todo.time}, ${todo.date}</i><i class="ms-5 todo-time">${todoUser}</i>
                 <hr>
               </div>
@@ -509,30 +490,18 @@ function openModal(todoId, currentTitle, currentBody) {
 
 window.openModal = openModal;
 
-// Function to close the modal
-// function closeModal() {
-//   const modal = document.getElementById('editModal');
-//   modal.style.display = 'none';
-// }
-
-// window.closeModal = closeModal;
-
-// Function to save changes made in the modal
 function saveChanges() {
   const todoId = document.getElementById('todoId').value;
   const newTitle = document.getElementById('editTitle').value;
   const newBody = document.getElementById('editBody').value;
 
-  // Call the editTodo function with new values
+  
   editTodo(todoId, newTitle, newBody);
-  // const modal = document.getElementById('editModal');
-  // modal.style.display = 'none';
 }
 
 window.saveChanges = saveChanges;
 
 
-      // Render todos initially
       renderTodos();
 
       function renderTodos() {
@@ -548,13 +517,12 @@ window.saveChanges = saveChanges;
             todoElement.innerHTML = `
       <div class="todo">
         <h3 class="todo-title">${todoData.inputOne}</h3>
-        <textarea class="area" rows="2" cols="27" disabled>${todoData.inputTwo}</textarea>
+        <p>${todoData.inputTwo}</p>
         <button onclick="openModal('${todoKey}', '${todoData.inputOne}', '${todoData.inputTwo}')">Edit</button>
         <button onclick="deleteTodo('${todoKey}')">Delete</button>
       </div>
     `;
 
-            // Appends todo element to the container
             showings.appendChild(todoElement);
           });
         });
@@ -571,7 +539,10 @@ window.saveChanges = saveChanges;
                 .catch(error => {
                     console.error("Error deleting todo:", error);
                 });
-            alert("Item removed from your list.🙂")
+                delSucc.style.display = 'block'
+                setTimeout(() => {
+                delSucc.style.display = 'none';
+                    }, 5000);
           }
            
         }
@@ -851,10 +822,15 @@ const submitFile = () => {
 
     if (!incomingFile) {
         console.error('No file selected!');
+        saver.style.display = 'none'
+            errorLoader.style.display = 'none'
+            plsInputFile.style.display = 'block';
+            setTimeout(() => {
+                  plsInputFile.style.display = 'none';
+                    }, 5000);
         return;
     } else {
         document.getElementById('filey').value = '';
-        // Clear description textarea
         document.getElementById('imageDescription').value = '';
     }
 
@@ -904,6 +880,17 @@ const submitFile = () => {
             const downloadURL = await getDownloadURL(storageRef);
 
             progress.style.display = "none";
+            // let fileType;
+            // if (incomingFile.type.startsWith('image/')) {
+            //     fileType = 'Images';
+            // } else if (incomingFile.type.startsWith('video/')) {
+            //     fileType = 'Videos';
+            // } else if (incomingFile.type.startsWith('audio/')) {
+            //     fileType = 'Audio';
+            // } else {
+            //     fileType = 'Others';
+            // }
+            // handleFileUpload(fileType);
 
             // Save file information to Firestore
             const fileData = {
@@ -931,7 +918,7 @@ const submitFile = () => {
             fileInfo.innerHTML += `
             <div class="d-flex class">
             <div>
-            <div>File name:<span class="des"> ${incomingFile.name}</span></div>
+            <div>File name:<span class="des">< ${incomingFile.name}</span></div>
             <div>File type:<span class="des"> ${incomingFile.type}</span></div>
             <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
             <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>

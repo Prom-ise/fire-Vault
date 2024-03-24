@@ -579,151 +579,151 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
-// const submitFile = async () => {
-//     let incomingFile = document.getElementById('filey').files[0];
-//     let imageDescription = document.getElementById('imageDescription').value.trim();
+const submitFile = async () => {
+    let incomingFile = document.getElementById('filey').files[0];
+    let imageDescription = document.getElementById('imageDescription').value.trim();
 
-//     if (!incomingFile) {
-//         console.error('No file selected!');
-//         return;
-//     } else {
-//         document.getElementById('filey').value = '';
-//         // Clear description textarea
-//         document.getElementById('imageDescription').value = '';
-//     }
+    if (!incomingFile) {
+        console.error('No file selected!');
+        return;
+    } else {
+        document.getElementById('filey').value = '';
+        // Clear description textarea
+        document.getElementById('imageDescription').value = '';
+    }
 
-//     onAuthStateChanged(auth, async (user) => {
-//         let progress = document.getElementById('progress');
-//         let filedUser = user.displayName;
-//         console.log(filedUser);
+    onAuthStateChanged(auth, async (user) => {
+        let progress = document.getElementById('progress');
+        let filedUser = user.displayName;
+        console.log(filedUser);
 
-//         let storageref = storef(storage, `${filedUser}/${incomingFile.name}`);
-//         let task = uploadBytesResumable(storageref, incomingFile);
+        let storageref = storef(storage, `${filedUser}/${incomingFile.name}`);
+        let task = uploadBytesResumable(storageref, incomingFile);
 
-//         progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
-//         progress.style.display = "block";
+        progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
+        progress.style.display = "block";
 
-//         console.log('Uploading...'); // Show a loading indicator
+        console.log('Uploading...'); // Show a loading indicator
 
-//         try {
-//             task.on('state_changed', (snapshot) => {
-//                 const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
-//                 progress.innerHTML = `<div class="spinnerContainer">
-//                 <div class="spinner"></div>
-//                 <div class="loader">
-//                     <p>${progressValue}% </p>
-//                     <div class="words">
-//                         <span class="word">Uploaded</span>
-//                         <span class="word">Uploaded</span>
-//                         <span class="word">Uploaded</span>
-//                         <span class="word">File</span>
-//                         <span class="word">Uploaded</span>
-//                     </div>
-//                 </div>
-//                 </div>`;
-//             });
+        try {
+            task.on('state_changed', (snapshot) => {
+                const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
+                progress.innerHTML = `<div class="spinnerContainer">
+                <div class="spinner"></div>
+                <div class="loader">
+                    <p>${progressValue}% </p>
+                    <div class="words">
+                        <span class="word">Uploaded</span>
+                        <span class="word">Uploaded</span>
+                        <span class="word">Uploaded</span>
+                        <span class="word">File</span>
+                        <span class="word">Uploaded</span>
+                    </div>
+                </div>
+                </div>`;
+            });
 
-//             await task; // Wait for the upload to finish
-//             const downloadURL = await getDownloadURL(storageref);
+            await task; // Wait for the upload to finish
+            const downloadURL = await getDownloadURL(storageref);
 
-//             progress.style.display = "none";
+            progress.style.display = "none";
 
-//             // Update file statistics based on the type of uploaded file
-//             let fileType;
-//             if (incomingFile.type.startsWith('image/')) {
-//                 fileType = 'Images';
-//             } else if (incomingFile.type.startsWith('video/')) {
-//                 fileType = 'Videos';
-//             } else if (incomingFile.type.startsWith('audio/')) {
-//                 fileType = 'Audio';
-//             } else {
-//                 fileType = 'Others';
-//             }
-//             handleFileUpload(fileType);
+            // Update file statistics based on the type of uploaded file
+            let fileType;
+            if (incomingFile.type.startsWith('image/')) {
+                fileType = 'Images';
+            } else if (incomingFile.type.startsWith('video/')) {
+                fileType = 'Videos';
+            } else if (incomingFile.type.startsWith('audio/')) {
+                fileType = 'Audio';
+            } else {
+                fileType = 'Others';
+            }
+            handleFileUpload(fileType);
 
-//             // Display uploaded image
-//             let fileElement;
-//             if (incomingFile.type.startsWith('image/')) {
-//                 fileElement = document.createElement('img');
-//             } else if (incomingFile.type.startsWith('video/')) {
-//                 fileElement = document.createElement('video');
+            // Display uploaded image
+            let fileElement;
+            if (incomingFile.type.startsWith('image/')) {
+                fileElement = document.createElement('img');
+            } else if (incomingFile.type.startsWith('video/')) {
+                fileElement = document.createElement('video');
 
-//                 fileElement.controls = true; // Add controls for video playback
-//             } else if (incomingFile.type.startsWith('audio/')) {
-//                 fileElement = document.createElement('audio');
+                fileElement.controls = true; // Add controls for video playback
+            } else if (incomingFile.type.startsWith('audio/')) {
+                fileElement = document.createElement('audio');
 
-//                 fileElement.controls = true; // Add controls for audio playback
-//               } else if (incomingFile.type.startsWith('application/pdf')) {
-//     // For PDF files
-//     fileElement = document.createElement('a');
-//     fileElement.href = URL.createObjectURL(incomingFile);
-//     fileElement.textContent = 'Download PDF';
-//     fileElement.download = incomingFile.name; // Set the file name for download
-//     // Optionally, you can open the PDF in a new tab instead of downloading it
-//     // fileElement.target = '_blank';
-//     // fileElement.textContent = 'View PDF';
-// } else if (incomingFile.type.startsWith('application/msword') || incomingFile.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
-//     // For Word documents (doc, docx)
-//     fileElement = document.createElement('a');
-//     fileElement.href = URL.createObjectURL(incomingFile);
-//     fileElement.textContent = 'Download Word Document';
-//     fileElement.download = incomingFile.name; // Set the file name for download
-// } else {
-//                 console.warn('Unsupported file type:', incomingFile.type);
-//                 return;
-//             }
+                fileElement.controls = true; // Add controls for audio playback
+              } else if (incomingFile.type.startsWith('application/pdf')) {
+    // For PDF files
+    fileElement = document.createElement('a');
+    fileElement.href = URL.createObjectURL(incomingFile);
+    fileElement.textContent = 'Download PDF';
+    fileElement.download = incomingFile.name; // Set the file name for download
+    // Optionally, you can open the PDF in a new tab instead of downloading it
+    // fileElement.target = '_blank';
+    // fileElement.textContent = 'View PDF';
+} else if (incomingFile.type.startsWith('application/msword') || incomingFile.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+    // For Word documents (doc, docx)
+    fileElement = document.createElement('a');
+    fileElement.href = URL.createObjectURL(incomingFile);
+    fileElement.textContent = 'Download Word Document';
+    fileElement.download = incomingFile.name; // Set the file name for download
+} else {
+                console.warn('Unsupported file type:', incomingFile.type);
+                return;
+            }
 
-//             fileElement.src = downloadURL;
-//             fileElement.alt = `${filedUser} File`;
-//             fileElement.classList.add('uploaded-file');
-//             images.innerHTML += '';
-//             images.appendChild(fileElement);
+            fileElement.src = downloadURL;
+            fileElement.alt = `${filedUser} File`;
+            fileElement.classList.add('uploaded-file');
+            images.innerHTML += '';
+            images.appendChild(fileElement);
 
-//             let fileInfo = document.createElement('p');
-//             fileInfo.innerHTML += `
-//             <div class="d-flex class">
-//             <div>
-//             <div>File name:<span class="des"> ${incomingFile.name}</span></div>
-//             <div>File type:<span class="des"> ${incomingFile.type}</span></div>
-//             <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
-//             <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
-//             </div>
-//             <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
-//             </div>
-//             `;
-//             images.appendChild(fileInfo);
+            let fileInfo = document.createElement('p');
+            fileInfo.innerHTML += `
+            <div class="d-flex class">
+            <div>
+            <div>File name:<span class="des"> ${incomingFile.name}</span></div>
+            <div>File type:<span class="des"> ${incomingFile.type}</span></div>
+            <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
+            <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
+            </div>
+            <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
+            </div>
+            `;
+            images.appendChild(fileInfo);
 
-//             // Display image description if provided
-//             if (imageDescription) {
-//                 let descriptionElement = document.createElement('p');
-//                 descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
-//                 images.appendChild(descriptionElement);
-//             }
-//             saver.style.display = 'block'
-//             errorLoader.style.display = 'none'
-//             setTimeout(() => {
-//                   saver.style.display = 'none';
-//                     }, 5000);
-//             console.log('File uploaded successfully:', downloadURL);
-//             () => {
-//     // Upload completed successfully, now we can get the download URL
-//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//       console.log('File available at', downloadURL);
-//     });
-//   }
-//         } catch (error) {
-//           saver.style.display = 'none'
-//             errorLoader.style.display = 'block'
-//             setTimeout(() => {
-//                   errorLoader.style.display = 'none';
-//                     }, 5000);
-//             console.error('Error uploading file:', error);
-//             // Handle errors appropriately, e.g., display an error message
-//         }
-//     });
-// };
+            // Display image description if provided
+            if (imageDescription) {
+                let descriptionElement = document.createElement('p');
+                descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
+                images.appendChild(descriptionElement);
+            }
+            saver.style.display = 'block'
+            errorLoader.style.display = 'none'
+            setTimeout(() => {
+                  saver.style.display = 'none';
+                    }, 5000);
+            console.log('File uploaded successfully:', downloadURL);
+            () => {
+    // Upload completed successfully, now we can get the download URL
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+    });
+  }
+        } catch (error) {
+          saver.style.display = 'none'
+            errorLoader.style.display = 'block'
+            setTimeout(() => {
+                  errorLoader.style.display = 'none';
+                    }, 5000);
+            console.error('Error uploading file:', error);
+            // Handle errors appropriately, e.g., display an error message
+        }
+    });
+};
 
-// window.submitFile = submitFile;
+window.submitFile = submitFile;
 
 // onAuthStateChanged(auth, (user) => {
 //     let userUid = user.uid;
@@ -816,172 +816,184 @@ function formatBytes(bytes, decimals = 2) {
 
 // window.submitFile = submitFile;
 
-const submitFile = () => {
-    let incomingFile = document.getElementById('filey').files[0];
-    let imageDescription = document.getElementById('imageDescription').value.trim();
+// const submitFile = () => {
+//     let incomingFile = document.getElementById('filey').files[0];
+//     let imageDescription = document.getElementById('imageDescription').value.trim();
 
-    if (!incomingFile) {
-        console.error('No file selected!');
-        saver.style.display = 'none'
-            errorLoader.style.display = 'none'
-            plsInputFile.style.display = 'block';
-            setTimeout(() => {
-                  plsInputFile.style.display = 'none';
-                    }, 5000);
-        return;
-    } else {
-        document.getElementById('filey').value = '';
-        document.getElementById('imageDescription').value = '';
-    }
+//     if (!incomingFile) {
+//         console.error('No file selected!');
+//         saver.style.display = 'none'
+//             errorLoader.style.display = 'none'
+//             plsInputFile.style.display = 'block';
+//             setTimeout(() => {
+//                   plsInputFile.style.display = 'none';
+//                     }, 5000);
+//         return;
+//     } else {
+//         document.getElementById('filey').value = '';
+//         document.getElementById('imageDescription').value = '';
+//     }
 
-    onAuthStateChanged(auth, async (user) => {
-        let progress = document.getElementById('progress');
-        let filedUser = user.displayName;
-        console.log(filedUser);
+//     onAuthStateChanged(auth, async (user) => {
+//         let progress = document.getElementById('progress');
+//         let filedUser = user.displayName;
+//         console.log(filedUser);
 
-        let fileType;
-        if (incomingFile.type.startsWith('image/')) {
-            fileType = 'Images';
-        } else if (incomingFile.type.startsWith('video/')) {
-            fileType = 'Videos';
-        } else if (incomingFile.type.startsWith('audio/')) {
-            fileType = 'Audio';
-        } else {
-            fileType = 'Others';
-        }
+//         let fileType;
+//         if (incomingFile.type.startsWith('image/')) {
+//             fileType = 'Images';
+//         } else if (incomingFile.type.startsWith('video/')) {
+//             fileType = 'Videos';
+//         } else if (incomingFile.type.startsWith('audio/')) {
+//             fileType = 'Audio';
+//         } else {
+//             fileType = 'Others';
+//         }
 
-        let storageRef = storef(storage, `${filedUser}/${incomingFile.name}`);
-        let task = uploadBytesResumable(storageRef, incomingFile);
+//         let storageRef = storef(storage, `${filedUser}/${incomingFile.name}`);
+//         let task = uploadBytesResumable(storageRef, incomingFile);
 
-        progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
-        progress.style.display = "block";
+//         progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
+//         progress.style.display = "block";
 
-        console.log('Uploading...'); // Show a loading indicator
+//         console.log('Uploading...'); // Show a loading indicator
 
-        try {
-            task.on('state_changed', (snapshot) => {
-                const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
-                progress.innerHTML = `<div class="spinnerContainer">
-                <div class="spinner"></div>
-                <div class="loader">
-                    <p>${progressValue}% </p>
-                    <div class="words">
-                        <span class="word">Uploaded</span>
-                        <span class="word">Uploaded</span>
-                        <span class="word">Uploaded</span>
-                        <span class="word">File</span>
-                        <span class="word">Uploaded</span>
-                    </div>
-                </div>
-                </div>`;
-            });
+//         try {
+//             task.on('state_changed', (snapshot) => {
+//                 const progressValue = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(2);
+//                 progress.innerHTML = `<div class="spinnerContainer">
+//                 <div class="spinner"></div>
+//                 <div class="loader">
+//                     <p>${progressValue}% </p>
+//                     <div class="words">
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">Uploaded</span>
+//                         <span class="word">File</span>
+//                         <span class="word">Uploaded</span>
+//                     </div>
+//                 </div>
+//                 </div>`;
+//             });
 
-            await task; // Wait for the upload to finish
-            const downloadURL = await getDownloadURL(storageRef);
+//             await task; // Wait for the upload to finish
+//             const downloadURL = await getDownloadURL(storageRef);
 
-            progress.style.display = "none";
-            // let fileType;
-            // if (incomingFile.type.startsWith('image/')) {
-            //     fileType = 'Images';
-            // } else if (incomingFile.type.startsWith('video/')) {
-            //     fileType = 'Videos';
-            // } else if (incomingFile.type.startsWith('audio/')) {
-            //     fileType = 'Audio';
-            // } else {
-            //     fileType = 'Others';
-            // }
-            // handleFileUpload(fileType);
+//             progress.style.display = "none";
+//             // let fileType;
+//             // if (incomingFile.type.startsWith('image/')) {
+//             //     fileType = 'Images';
+//             // } else if (incomingFile.type.startsWith('video/')) {
+//             //     fileType = 'Videos';
+//             // } else if (incomingFile.type.startsWith('audio/')) {
+//             //     fileType = 'Audio';
+//             // } else {
+//             //     fileType = 'Others';
+//             // }
+//             // handleFileUpload(fileType);
 
-            // Save file information to Firestore
-            const fileData = {
-                fileName: incomingFile.name,
-                fileType: fileType,
-                downloadURL: downloadURL,
-                description: imageDescription || ""
-            };
+//             // Save file information to Firestore
+//             const fileData = {
+//                 fileName: incomingFile.name,
+//                 fileType: fileType,
+//                 downloadURL: downloadURL,
+//                 description: imageDescription || ""
+//             };
 
-            // const docRef = doc(firestore, "files", filedUser);
-            // await setDoc(docRef, fileData);
+//             // const docRef = doc(firestore, "files", filedUser);
+//             // await setDoc(docRef, fileData);
 
-            // Display uploaded image
-            let fileElement;
-            if (incomingFile.type.startsWith('image/')) {
-                fileElement = document.createElement('img');
-                fileElement.src = downloadURL;
-                fileElement.alt = `${filedUser} File`;
-                fileElement.classList.add('uploaded-file');
-                images.innerHTML += '';
-                images.appendChild(fileElement);
-            }
+//             // Display uploaded image
+//             let fileElement;
+//             if (incomingFile.type.startsWith('image/')) {
+//                 fileElement = document.createElement('img');
+//                 fileElement.src = downloadURL;
+//                 fileElement.alt = `${filedUser} File`;
+//                 fileElement.classList.add('uploaded-file');
+//                 images.innerHTML += '';
+//                 images.appendChild(fileElement);
+//             }
 
-            let fileInfo = document.createElement('p');
-            fileInfo.innerHTML += `
-            <div class="d-flex class">
-            <div>
-            <div>File name:<span class="des">< ${incomingFile.name}</span></div>
-            <div>File type:<span class="des"> ${incomingFile.type}</span></div>
-            <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
-            <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
-            </div>
-            <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
-            </div>
-            `;
-            images.appendChild(fileInfo);
+//             let fileInfo = document.createElement('p');
+//             fileInfo.innerHTML += `
+//             <div class="d-flex class">
+//             <div>
+//             <div>File name:<span class="des">< ${incomingFile.name}</span></div>
+//             <div>File type:<span class="des"> ${incomingFile.type}</span></div>
+//             <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
+//             <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
+//             </div>
+//             <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
+//             </div>
+//             `;
+//             images.appendChild(fileInfo);
 
-            // Display image description if provided
-            if (imageDescription) {
-                let descriptionElement = document.createElement('p');
-                descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
-                images.appendChild(descriptionElement);
-            }
-            saver.style.display = 'block'
-            errorLoader.style.display = 'none'
-            setTimeout(() => {
-                  saver.style.display = 'none';
-                    }, 5000);
-            console.log('File uploaded successfully:', downloadURL);
-        } catch (error) {
-            saver.style.display = 'none'
-            errorLoader.style.display = 'block'
-            setTimeout(() => {
-                errorLoader.style.display = 'none';
-            }, 5000);
-            console.error('Error uploading file:', error);
-            // Handle errors appropriately, e.g., display an error message
-        }
-    });
-};
+//             // Display image description if provided
+//             if (imageDescription) {
+//                 let descriptionElement = document.createElement('p');
+//                 descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
+//                 images.appendChild(descriptionElement);
+//             }
+//             saver.style.display = 'block'
+//             errorLoader.style.display = 'none'
+//             setTimeout(() => {
+//                   saver.style.display = 'none';
+//                     }, 5000);
+//             console.log('File uploaded successfully:', downloadURL);
+//         } catch (error) {
+//             saver.style.display = 'none'
+//             errorLoader.style.display = 'block'
+//             setTimeout(() => {
+//                 errorLoader.style.display = 'none';
+//             }, 5000);
+//             console.error('Error uploading file:', error);
+//             // Handle errors appropriately, e.g., display an error message
+//         }
+//     });
+// };
 
-window.submitFile = submitFile;
+// window.submitFile = submitFile;
 let incomingFile = document.getElementById('filey').files[0];
 // let toDelete = incomingFile
 
-const deleteFile = () => {
-  // Get the file name
-  const fileName = incomingFile.name;
-    // Check if a file is selected
-    if (!incomingFile) {
+const deleteFile = (filePath) => {
+    // Check if a file name is provided
+    if (!filePath) {
         console.error("No file selected for deletion");
         return;
     }
 
-    
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            let filedUser = user.displayName;
+            console.log(filedUser);
 
-    // Construct the full path to the file
-    const filePath = 'path/to/your/folder/' + fileName; // Replace 'path/to/your/folder/' with your actual folder path
+            // Construct the full path to the file
+            const filePathed = `${filedUser}/${filePath}`;
 
-    // Create a reference to the file
-    const fileRef = ref(storage, filePath);
+            // Create a reference to the file
+            const fileRef = storef(storage, `${filedUser}/${filePath}`);
 
-    // Delete the file
-    deleteObject(fileRef)
-        .then(() => {
-            alert("File deleted successfully");
-        })
-        .catch((error) => {
-            console.error("Error deleting file:", error);
-        });
+            // Delete the file
+            deleteObject(fileRef)
+                .then(() => {
+                    console.log("File deleted successfully");
+                    // Perform any additional actions after successful deletion
+                })
+                .catch((error) => {
+                    console.error("Error deleting file:", error);
+                    // Handle errors appropriately, e.g., display an error message
+                });
+        } else {
+            console.error("User not logged in");
+            // Handle the scenario where the user is not logged in
+        }
+    });
 }
+
+// Expose the deleteFile function globally
+window.deleteFile = deleteFile;
+
 
 
 // Assuming you have 'filedUser' defined somewhere before

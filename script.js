@@ -52,7 +52,7 @@ document.getElementById('showings')
  }
 
 let fileStatistics = {
-   "Images": 0,
+   "Images": -1,
    "Videos": 0,
    "Audio": 0,
    "Documents": 0,
@@ -124,7 +124,7 @@ function filterTodos(searchQuery) {
     const todoDescription = todo.querySelector('p').textContent.toLowerCase();
 
     if (todoContent.includes(searchQuery) || todoDescription.includes(searchQuery)) {
-      // Show todo if it matches the search query
+      
       todo.style.display = 'block';
     } else {
       todo.style.display = 'none';

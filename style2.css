@@ -650,12 +650,12 @@ span:hover{
 }
 
 .btn21:hover::before, .btn22:hover::before, .btn23:hover::before {
-  transform: translateY(-25px);
+  /* transform: translateY(-25px); */
   height: 0;
 }
 
 .btn21:hover::after, .btn22:hover::after, .btn23:hover::after {
-  transform: scaleX(0);
+  /* transform: scaleX(0); */
   transition-delay: 0.15s;
 }
 
@@ -666,6 +666,9 @@ span:hover{
 .btn21 span, .btn22 span, .btn23 span {
   position: relative;
   z-index: 3;
+}
+.btn21 span:hover, .btn22 span:hover, .btn23 span:hover{
+  color: white;
 }
 .btn21:focus, .btn22:focus, .btn23:focus{
  border: 2px solid lime
@@ -879,8 +882,8 @@ span:hover{
 
  @media (max-width: 800px){
   .input, .inpu{
-    width: 86%;
-    margin-left: 6.7%;
+    width: 116%;
+    margin-left: -8.7%;
   }
   .input::placeholder{
     font-size: 15px;
@@ -959,7 +962,7 @@ span:hover{
     font-size: 12px;
   }
  }
- @media (max-width: 300px) {
+ @media (max-width: 350px) {
   #plsInput, #plsInputFile, #saver, #saves #errorLoader, #occurError{
     font-size: 16px;
     text-align: center;

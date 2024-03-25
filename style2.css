@@ -907,6 +907,12 @@ span:hover{
     font-size: 15px;
   }
  }
+
+ @media (max-width: 455px) {
+  #completedList{
+    display: none;
+  }
+ }
  @media (max-width: 440px) {
   #plsInput, #plsInputFile, #saver, #saves, #errorLoader, #occurError{
     font-size: 16px;

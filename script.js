@@ -17,16 +17,17 @@ document.getElementById('greetings')
  const openWork = () => {
   greetings.style.display = 'none'
   storage.style.display = 'block'
+  setTimeout(()=> {
+    impo.style.display = 'none';
+  }, 10000); 
  }
 
 
- document.addEventListener("DOMContentLoaded", function() {
-  var impo = document.getElementById('impo');
+//  document.addEventListener("DOMContentLoaded", function() {
+//   var impo = document.getElementById('impo');
   
-  setTimeout(function() {
-    impo.style.display = 'none';
-  }, 10000); 
-});
+ 
+// });
 
 document.getElementById('images')
 document.getElementById('showings')
@@ -136,4 +137,6 @@ document.getElementById('searchInput').addEventListener('input', (event) => {
   filterTodos(searchQuery);
 });
 
- 
+ function generateUniqueId() {
+    return '_' + Math.random().toString(36).substr(2, 9); // Generates a random string
+}

@@ -195,7 +195,7 @@
             </div>
             <div class="text-center sticky-top del-succ animate__animated animate__headShake" id="delSucc">Todo Item Removed Successfully 😊</div>
             
-            <div id="showings" class="animate__animated animate__zoomIn"></div>
+            <div id="showings" class="animate__animated animate__zoomIn">NO TODOS YET</div>
             <div id="images" class="animate__animated animate__slideInRight"></div>
             <div id="charter" class="animate__animated animate__slideInRight"><canvas id="myChart" style="margin-bottom:10px;"></canvas></div>
       </div>
@@ -585,6 +585,12 @@ const submitFile = async () => {
 
     if (!incomingFile) {
         console.error('No file selected!');
+        saver.style.display = 'none';
+        errorLoader.style.display = 'none';
+        plsInputFile.style.display = 'block';
+        setTimeout(() => {
+            plsInputFile.style.display = 'none';
+        }, 5000);
         return;
     } else {
         document.getElementById('filey').value = '';
@@ -597,7 +603,21 @@ const submitFile = async () => {
         let filedUser = user.displayName;
         console.log(filedUser);
 
-        let storageref = storef(storage, `${filedUser}/${incomingFile.name}`);
+        let storageref;
+
+        // Determine the file type and set the storage reference accordingly
+        if (incomingFile.type.startsWith('image/')) {
+            storageref = storef(storage, `${filedUser}/images/${incomingFile.name}`);
+        } else if (incomingFile.type.startsWith('video/')) {
+            storageref = storef(storage, `${filedUser}/videos/${incomingFile.name}`);
+        } else if (incomingFile.type.startsWith('audio/')) {
+            storageref = storef(storage, `${filedUser}/audio/${incomingFile.name}`);
+        } else if (incomingFile.type.startsWith('application/pdf') || incomingFile.type.startsWith('application/msword') || incomingFile.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+            storageref = storef(storage, `${filedUser}/documents/${incomingFile.name}`);
+        } else {
+            storageref = storef(storage, `${filedUser}/others/${incomingFile.name}`);
+        }
+
         let task = uploadBytesResumable(storageref, incomingFile);
 
         progress.innerHTML = `<div class="mx-auto loader mb-4">Uploading...</div>`;
@@ -641,89 +661,102 @@ const submitFile = async () => {
             }
             handleFileUpload(fileType);
 
-            // Display uploaded image
-            let fileElement;
-            if (incomingFile.type.startsWith('image/')) {
-                fileElement = document.createElement('img');
-            } else if (incomingFile.type.startsWith('video/')) {
-                fileElement = document.createElement('video');
+            // Store uploaded file information in local storage
+            const uploadedFileInfo = {
+                name: incomingFile.name,
+                type: incomingFile.type,
+                size: incomingFile.size,
+                dateAdded: new Date().toLocaleString(),
+                downloadURL: downloadURL,
+                description: imageDescription
+            };
 
-                fileElement.controls = true; // Add controls for video playback
-            } else if (incomingFile.type.startsWith('audio/')) {
-                fileElement = document.createElement('audio');
+            let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            uploadedFiles.push(uploadedFileInfo);
+            localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
 
-                fileElement.controls = true; // Add controls for audio playback
-              } else if (incomingFile.type.startsWith('application/pdf')) {
-    // For PDF files
-    fileElement = document.createElement('a');
-    fileElement.href = URL.createObjectURL(incomingFile);
-    fileElement.textContent = 'Download PDF';
-    fileElement.download = incomingFile.name; // Set the file name for download
-    // Optionally, you can open the PDF in a new tab instead of downloading it
-    // fileElement.target = '_blank';
-    // fileElement.textContent = 'View PDF';
-} else if (incomingFile.type.startsWith('application/msword') || incomingFile.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
-    // For Word documents (doc, docx)
-    fileElement = document.createElement('a');
-    fileElement.href = URL.createObjectURL(incomingFile);
-    fileElement.textContent = 'Download Word Document';
-    fileElement.download = incomingFile.name; // Set the file name for download
-} else {
-                console.warn('Unsupported file type:', incomingFile.type);
-                return;
-            }
+            // Display uploaded file on the page
+            displayUploadedFile(uploadedFileInfo);
 
-            fileElement.src = downloadURL;
-            fileElement.alt = `${filedUser} File`;
-            fileElement.classList.add('uploaded-file');
-            images.innerHTML += '';
-            images.appendChild(fileElement);
-
-            let fileInfo = document.createElement('p');
-            fileInfo.innerHTML += `
-            <div class="d-flex class">
-            <div>
-            <div>File name:<span class="des"> ${incomingFile.name}</span></div>
-            <div>File type:<span class="des"> ${incomingFile.type}</span></div>
-            <div> Size: <span class="des">${formatBytes(incomingFile.size)}</span></div>
-            <div> Date added: <span class="des">${new Date().toLocaleString()}</span></div>
-            </div>
-            <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="handleDeleteButtonClick('${incomingFile.name}')"></i>
-            </div>
-            `;
-            images.appendChild(fileInfo);
-
-            // Display image description if provided
-            if (imageDescription) {
-                let descriptionElement = document.createElement('p');
-                descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${imageDescription}<span></div><hr class="mb-5">`
-                images.appendChild(descriptionElement);
-            }
-            saver.style.display = 'block'
-            errorLoader.style.display = 'none'
+            saver.style.display = 'block';
+            errorLoader.style.display = 'none';
             setTimeout(() => {
-                  saver.style.display = 'none';
-                    }, 5000);
+                saver.style.display = 'none';
+            }, 5000);
             console.log('File uploaded successfully:', downloadURL);
-            () => {
-    // Upload completed successfully, now we can get the download URL
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      console.log('File available at', downloadURL);
-    });
-  }
         } catch (error) {
-          saver.style.display = 'none'
-            errorLoader.style.display = 'block'
+            saver.style.display = 'none';
+            errorLoader.style.display = 'block';
             setTimeout(() => {
-                  errorLoader.style.display = 'none';
-                    }, 5000);
+                errorLoader.style.display = 'none';
+            }, 5000);
             console.error('Error uploading file:', error);
             // Handle errors appropriately, e.g., display an error message
         }
     });
 };
 
+const displayUploadedFile = (uploadedFileInfo) => {
+    // Create file element based on file type
+       // Create file element based on file type
+       let fileElement;
+    if (uploadedFileInfo.type.startsWith('image/')) {
+        fileElement = document.createElement('img');
+    } else if (uploadedFileInfo.type.startsWith('video/')) {
+        fileElement = document.createElement('video');
+        fileElement.controls = true; // Add controls for video playback
+    } else if (uploadedFileInfo.type.startsWith('audio/')) {
+        fileElement = document.createElement('audio');
+        fileElement.controls = true; // Add controls for audio playback
+    } else if (uploadedFileInfo.type.startsWith('application/pdf')) {
+        // For PDF files
+        fileElement = document.createElement('a');
+        fileElement.href = uploadedFileInfo.downloadURL;
+        fileElement.textContent = 'Download PDF';
+        fileElement.download = uploadedFileInfo.name; // Set the file name for download
+    } else if (uploadedFileInfo.type.startsWith('application/msword') || uploadedFileInfo.type.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+        // For Word documents (doc, docx)
+        fileElement = document.createElement('a');
+        fileElement.href = uploadedFileInfo.downloadURL;
+        fileElement.textContent = 'Download Word Document';
+        fileElement.download = uploadedFileInfo.name; // Set the file name for download
+    } else {
+        console.warn('Unsupported file type:', uploadedFileInfo.type);
+        return;
+    }
+
+    fileElement.src = uploadedFileInfo.downloadURL;
+    fileElement.alt = `${filedUser} File`;
+    fileElement.classList.add('uploaded-file');
+    images.innerHTML += '';
+    images.appendChild(fileElement);
+
+    // Display file information
+    let fileInfo = document.createElement('p');
+    const fileId = generateUniqueId(); // Generating a unique ID for the file information container
+    fileInfo.id = `fileInfo_${fileId}`;
+    fileInfo.innerHTML += `
+        <div class="d-flex class">
+            <div>
+                <div>File name:<span class="des"> ${uploadedFileInfo.name}</span></div>
+                <div>File type:<span class="des"> ${uploadedFileInfo.type}</span></div>
+                <div> Size: <span class="des">${formatBytes(uploadedFileInfo.size)}</span></div>
+                <div> Date added: <span class="des">${uploadedFileInfo.dateAdded}</span></div>
+            </div>
+            <i class="fa-solid fa-trash trash m-3 text-end text-danger fs-4" onclick="deleteFile('${uploadedFileInfo.name}')"></i>
+        </div>
+    `;
+    images.appendChild(fileInfo);
+
+    // Display image description if provided
+    if (uploadedFileInfo.description) {
+        let descriptionElement = document.createElement('p');
+        descriptionElement.innerHTML = `<div class="imag"><i>Image Description:</i> <span class="des">${uploadedFileInfo.description}</span></div><hr class="mb-5">`;
+        images.appendChild(descriptionElement);
+}
+
 window.submitFile = submitFile;
+
 
 // onAuthStateChanged(auth, (user) => {
 //     let userUid = user.uid;
@@ -953,10 +986,10 @@ window.submitFile = submitFile;
 // };
 
 // window.submitFile = submitFile;
-let incomingFile = document.getElementById('filey').files[0];
+// let incomingFile = document.getElementById('filey').files[0];
 // let toDelete = incomingFile
 
-const deleteFile = (filePath) => {
+const deleteFile = (filePath, fileId) => {
     // Check if a file name is provided
     if (!filePath) {
         console.error("No file selected for deletion");
@@ -966,33 +999,42 @@ const deleteFile = (filePath) => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             let filedUser = user.displayName;
-            console.log(filedUser);
+            // console.log(filedUser);
 
-            // Construct the full path to the file
-            const filePathed = `${filedUser}/${filePath}`;
-
-            // Create a reference to the file
             const fileRef = storef(storage, `${filedUser}/${filePath}`);
 
             // Delete the file
             deleteObject(fileRef)
                 .then(() => {
                     console.log("File deleted successfully");
-                    // Perform any additional actions after successful deletion
+                
+                    // Clear description element
+                    const descriptionElement = document.getElementById(`description_${fileId}`);
+                   if(descriptionElement){
+                        descriptionElement.innerHTML = '';
+                    }
+                    // Clear file info
+                    const fileInfo = document.getElementById(`fileInfo_${fileId}`);
+                    if(fileInfo){
+                        fileInfo.innerHTML = '';
+                    }
+                    // Clear file info
+                    // const fileInfo = document.getElementById(`fileInfo_${fileId}`);
+                   
+                    //     fileInfo.innerHTML = '';
+                  
                 })
                 .catch((error) => {
                     console.error("Error deleting file:", error);
-                    // Handle errors appropriately, e.g., display an error message
                 });
         } else {
             console.error("User not logged in");
-            // Handle the scenario where the user is not logged in
         }
     });
 }
 
-// Expose the deleteFile function globally
 window.deleteFile = deleteFile;
+
 
 
 
@@ -1024,11 +1066,11 @@ window.deleteFile = deleteFile;
 // };
 
 // Function to handle delete button click
-const handleDeleteButtonClick = (filePath) => {
-    // Call deleteFile function with the file path
-    deleteFile(filePath);
-};
-window.handleDeleteButtonClick = handleDeleteButtonClick;
+// const handleDeleteButtonClick = (filePath) => {
+//     // Call deleteFile function with the file path
+//     deleteFile(filePath);
+// };
+// window.handleDeleteButtonClick = handleDeleteButtonClick;
 
 
 
